@@ -1,0 +1,75 @@
+What is Lorem Ipsum?
+Lorem Ipsum is simply dummy text.
+Why do we use it?
+It is a long established fact.
+Where can I get some?
+There are many..
+Where does it come from?
+Contrary to popular belief.
+The standard chunk of Lorem Ipsum used.
+int	get_next_line(int fd, char **line)
+{
+	char		*fd_content;
+	int			line_len;
+	static int pos;
+
+	fd_content = ft_read_next_line(fd, pos);
+	if (!fd_content)
+		return (-1);
+	line_len = ft_line_len(fd_content + pos);
+	*line = malloc(sizeof(char) * (line_len + 1));
+	ft_cpyline(*line, fd_content + pos);
+	pos += ft_strlen(*line) + 1;
+	free(fd_content);
+	return (1);
+}
+
+1fjhfhfjh
+2fjhgfhjf
+here are many..
+Where does it come from?
+Contrary to popular belief.
+The standard chunk of Lorem Ipsum used.
+int	get_next_line(int fd, char **line)
+{
+	char		*fd_content;
+	int			line_len;
+	static int pos;
+
+	fd_content = ft_read_next_line(fd, pos);
+	if (!fd_content)
+		return (-1);
+	line_len = ft_line_len(fd_content + pos);
+	*line = malloc(sizeof(char) * (line_len + 1));
+	ft_cpyline(*line, fd_content + pos);
+	pos += ft_strlen(*line) + 1;
+	free(fd_content);
+	return (1);
+}
+here are many..
+Where does it come from?
+Contrary to popular belief.
+The standard chunk of Lorem Ipsum used.
+int	get_next_line(int fd, char **line)
+{
+	char		*fd_content;
+	int			line_len;
+	static int pos;
+
+	fd_content = ft_read_next_line(fd, pos);
+	if (!fd_content)
+		return (-1);
+	line_len = ft_line_len(fd_content + pos);
+	*line = malloc(sizeof(char) * (line_len + 1));
+	ft_cpyline(*line, fd_content + pos);
+	pos += ft_strlen(*line) + 1;
+	free(fd_content);
+	return (1);
+}
+
+
+
+
+
+
+p
