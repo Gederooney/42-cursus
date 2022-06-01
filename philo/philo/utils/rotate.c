@@ -6,11 +6,11 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 14:09:12 by ryebadok          #+#    #+#             */
-/*   Updated: 2021/11/19 11:08:21 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/05/31 23:46:20 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/utils.h"
+#include "utils.h"
 
 void	ft_shift_left(int *tab, int n)
 {

@@ -6,13 +6,13 @@
 #    By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/27 08:15:39 by ryebadok          #+#    #+#              #
-#    Updated: 2021/11/19 11:44:35 by ryebadok         ###   ########.fr        #
+#    Updated: 2022/06/01 14:03:35 by ryebadok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # -------------------------------- Variables -------------------------------- #
 NAME = philo
-ROOT = srcs
+ROOT = main
 INC = includes
 CFLAGS = -Wall -Werror -Wextra
 CC = gcc
@@ -28,15 +28,15 @@ RMD = rmdir
 OBJ = ofiles
 
 # -------------------------------- Header files ----------------------------- #
-HFILES = philo.h srcs.h types.h utils.h 
+HFILES = philo.h utils.h 
 
 # -------------------------------- C FILES ---------------------------------- #
-MAIN_C = errors.c main.c parse.c threads.c routine.c
+MAIN_C = main.c parse.c init.c
 UTILS_C = atoi.c string.c rotate.c array.c time.c
 
 # -------------------------------- DIRECTORIES PATHS ------------------------ #
-MAIN_DIR = $(ROOT)/main
-UTILS_DIR = $(ROOT)/utils
+MAIN_DIR = main
+UTILS_DIR = utils
 
 # -------------------------------- SOURCES FILES ---------------------------- #
 MAIN_SRCS = $(addprefix $(MAIN_DIR)/, $(MAIN_C))

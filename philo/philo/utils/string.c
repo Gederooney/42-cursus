@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   srcs.h                                             :+:      :+:    :+:   */
+/*   string.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/27 08:57:15 by ryebadok          #+#    #+#             */
-/*   Updated: 2021/11/19 11:10:17 by ryebadok         ###   ########.fr       */
+/*   Created: 2021/09/28 10:29:28 by ryebadok          #+#    #+#             */
+/*   Updated: 2022/03/25 11:30:14 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SRCS_H
-# define SRCS_H
+#include "utils.h"
 
-int		ft_errors(int code);
-t_var	*ft_parse(char **arg, int n);
-void	*ft_routine(void *arg);
-t_g		**ft_initthreads(t_var *v);
+/*
+	Cette fonction prend un pointeur sur chaine de caractères et retourne
+	le nombre d'élement sur ce pointeur.
+*/
+int	ft_charprt_len(char **p)
+{
+	int	i;
 
-#endif
+	i = 0;
+	while (*p)
+	{
+		i++;
+		p++;
+	}
+	return (i);
+}

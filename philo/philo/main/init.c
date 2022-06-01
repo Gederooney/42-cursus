@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string.c                                           :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/28 10:29:28 by ryebadok          #+#    #+#             */
-/*   Updated: 2021/11/19 11:09:18 by ryebadok         ###   ########.fr       */
+/*   Created: 2022/06/01 14:02:05 by ryebadok          #+#    #+#             */
+/*   Updated: 2022/06/01 14:39:59 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/utils.h"
+#include "philo.h"
 
-/*
-	Cette fonction prend un pointeur sur chaine de caractères et retourne
-	le nombre d'élement sur ce pointeur.
-*/
-int	ft_charprt_len(char **p)
-{
-	int	i;
+t_p	ft_init_single(size_t id, t_arg *g){
+	t_p		p;
+
+	p.id = id;
+	p.nom = 0;
+	p.g = g;
+	return (p);
+}
+
+bool	ft_init(t_app *app, t_arg *g){
+	size_t	i;
 
 	i = 0;
-	while (*p)
-	{
+	app->t = malloc(sizeof(t_p) * (int)g->nbrp);
+	if (!app->t)
+		return (false);
+	while (i < g->nbrp){
+		app->t[i] = ft_init_single(i,g);
 		i++;
-		p++;
 	}
-	return (i);
+	return (true);
 }

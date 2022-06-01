@@ -5,36 +5,32 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/27 08:53:42 by ryebadok          #+#    #+#             */
-/*   Updated: 2021/11/19 11:59:41 by ryebadok         ###   ########.fr       */
+/*   Created: 2022/06/01 11:56:41 by ryebadok          #+#    #+#             */
+/*   Updated: 2022/06/01 13:59:33 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/utils.h"
-#include "../../includes/philo.h"
-#include "../../includes/philo.h"
+#include "philo.h"
+#include "utils.h"
 
-/*
-	arg ==> arguments
-	n ==> nombre d'arguments
-*/
-t_var	*ft_parse(char **arg, int n)
+size_t	ft_get_arg(const char *s)
 {
-	t_var	*var;
+	if (ft_only_num(s))
+		return (size_t)ft_atoi(s);
+	return (0);
+}
 
-	var = malloc(sizeof(t_var));
-	if (!var)
-		return (NULL);
-	var->n = ft_atoi(*(arg++));
-	var->td = ft_atoi(*(arg++)) * 1000;
-	var->te = ft_atoi(*(arg++)) * 1000;
-	var->ts = ft_atoi(*(arg++)) * 1000;
-	if (n == 5)
-		var->nte = ft_atoi(*arg);
-	if (!var->td || !var->te || !var->ts || (n == 5 && !var->nte))
-	{
-		free(var);
-		return (NULL);
+int	ft_parse(int n, char **v, t_arg *g){
+	if (n == 5 || n == 6){
+		g->nbrp = ft_get_arg(v[0]);
+		g->ttd = ft_get_arg(v[1]);
+		g->tte = ft_get_arg(v[2]);
+		g->tts = ft_get_arg(v[3]);
+		if (n == 5)
+			return (g->nbrp && g->ttd && g->tte && g->tts);
+		if (n == 6)
+			g->nbre = ft_get_arg(v[4]);
+		return (g->nbrp && g->ttd && g->tte && g->tts && g->nbre);
 	}
-	return (var);
+	return (0);
 }

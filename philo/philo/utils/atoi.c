@@ -6,12 +6,20 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 10:00:37 by ryebadok          #+#    #+#             */
-/*   Updated: 2021/10/19 19:34:44 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/01 12:39:28 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/utils.h"
-#include "../../includes/types.h"
+#include "utils.h"
+
+bool	ft_only_num(const char *s){
+	while (*s){
+		if (*s < '0' || *s > '9')
+			return false;
+		s++;
+	}
+	return true;
+}
 
 static int	ft_isspace(int c)
 {
