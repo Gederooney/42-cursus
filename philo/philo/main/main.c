@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 11:13:46 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/01 14:11:58 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/01 19:51:55 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,16 @@ int	ft_error(const char *e_msg){
 	return (1);
 }
 
-bool	ft_run_table(t_arg *g){
+bool	ft_serve(t_app app){
+	printf("%d\n", (int)app.t[app.g->nbrp - 1].id);
+	return (true);
+}
+
+bool	ft_dinner(t_arg *g){
 	t_app	app;
 
 	if (ft_init(&app, g)){
-		
+		ft_serve(app);
 	}
 	return (false);
 }
@@ -48,7 +53,7 @@ int main(int n, char **v){
 	if (n == 5 || n == 6)
 	{
 		if (ft_parse(n, v + 1, &arg)){
-			if (ft_run_table(&arg))
+			if (ft_dinner(&arg))
 				return (0);
 			return (1);
 		}

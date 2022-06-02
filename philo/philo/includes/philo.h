@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 08:55:53 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/01 14:15:52 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/01 20:02:45 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 typedef struct s_f
 {
-	bool			f;
+	bool			s;
 	pthread_mutex_t	*m;
 }	t_f;
 
@@ -53,8 +53,6 @@ typedef struct s_arg
 	nom: number of meal
 */
 typedef	struct s_p{
-	t_f				*o_f;
-	t_f				*s_f;
 	t_arg			*g;
 	size_t			id;
 	size_t			nom;

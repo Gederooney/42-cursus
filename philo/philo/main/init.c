@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 14:02:05 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/01 14:39:59 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/01 20:08:20 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,17 @@ bool	ft_init(t_app *app, t_arg *g){
 
 	i = 0;
 	app->t = malloc(sizeof(t_p) * (int)g->nbrp);
-	if (!app->t)
+	app->fs = malloc(sizeof(t_f) * (int)g->nbrp);
+	if (!app->t || !app->fs || !app->s)
 		return (false);
 	while (i < g->nbrp){
 		app->t[i] = ft_init_single(i,g);
+		app->fs[i].m = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t));
+		pthread_mutex_init(app->fs[i].m, NULL);
 		i++;
 	}
+	app->s = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t));
+	pthread_mutex_init(app->s, NULL);
 	return (true);
 }
+ 
