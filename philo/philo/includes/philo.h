@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 08:55:53 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/01 20:02:45 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/11 18:13:56 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,6 @@
 # include <stdio.h>
 # include <stdbool.h>
 # include <sys/time.h>
-
-
-typedef struct s_f
-{
-	bool			s;
-	pthread_mutex_t	*m;
-}	t_f;
 
 /*
 	nbrp: number of philosophers
@@ -57,25 +50,39 @@ typedef	struct s_p{
 	size_t			id;
 	size_t			nom;
 	pthread_t		t_id;
-	pthread_mutex_t	*s;
+	size_t			*s;
 }	t_p;
 
 /*
-	t: table of philos
-	fs: all forks on the table
-	g: arguments
-	s:	state
+	p -> actual pphilospher
+	q -> eating q;
+	fs -> all forks
+	s -> mutex to lock when modiding sensibles data
+	qc -> queu control
+*/
+typedef	struct s_thread
+{
+	t_p				p;
+	size_t			*q;
+	pthread_mutex_t	*fs;
+	pthread_mutex_t	s;
+	pthread_mutex_t	qc;
+}	t_thread;
+
+
+/*
+	tds: all the threads in this process
 */
 typedef	struct s_app
 {
-	t_p				*t;
-	t_f				*fs;
-	t_arg			*g;
-	pthread_mutex_t	*s;
+	t_thread	*tds;
+	t_arg		g;
 }	t_app;
 
-bool	ft_init(t_app *app, t_arg *g);
+void	*ft_routine(void *args);
+bool	ft_init(t_app *room, t_arg *g);
 int		ft_error(const char *e_msg);
 int		ft_parse(int n, char **v, t_arg *args);
+bool	ft_makecouverts(t_app *app);
 
 #endif

@@ -6,15 +6,23 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 14:09:12 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/05/31 23:46:20 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/11 20:21:37 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-void	ft_shift_left(int *tab, int n)
+void	ft_print_arr(size_t count, size_t *array){
+	size_t	i;
+
+	i = 0;
+	while (i < count)
+		printf("%d\n", (int)array[i++]);
+}
+
+void	ft_shift_left(size_t *tab, size_t n)
 {
-	int	i;
+	size_t	i;
 
 	i = 1;
 	while (i <= n)
@@ -24,9 +32,9 @@ void	ft_shift_left(int *tab, int n)
 	}
 }
 
-void	ft_ra(int *a, int x)
+void	ft_ra(size_t *a, size_t x)
 {
-	int	temp;
+	size_t	temp;
 
 	temp = a[0];
 	ft_shift_left(a, x - 1);

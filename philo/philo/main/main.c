@@ -6,11 +6,12 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 11:13:46 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/01 19:51:55 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/11 20:35:58 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+#include "utils.h"
 void ft_help(void){
 	printf("\n");
 	printf("%s\n", "--help philosophers");
@@ -33,16 +34,30 @@ int	ft_error(const char *e_msg){
 	return (1);
 }
 
-bool	ft_serve(t_app app){
-	printf("%d\n", (int)app.t[app.g->nbrp - 1].id);
-	return (true);
+bool	ft_makecouverts(t_app *room){
+	size_t	i;
+	size_t	*queu;
+
+	i = 0;
+	queu = malloc(sizeof(size_t) * room->g.nbrp);
+	
+	while (i < room->g.nbrp){
+		queu[i] = i;
+		room->tds[i].q = queu;
+		pthread_create(&room->tds[i].p.t_id, NULL, (void *)ft_routine, 
+			(void *)(&(room->tds[i])));
+		pthread_join(room->tds[i].p.t_id, NULL);
+		i++;
+	}
+	return(true);
 }
 
 bool	ft_dinner(t_arg *g){
-	t_app	app;
+	t_app	room;
 
-	if (ft_init(&app, g)){
-		ft_serve(app);
+	if (ft_init(&room, g)){
+		ft_makecouverts(&room);
+		return (true);
 	}
 	return (false);
 }
