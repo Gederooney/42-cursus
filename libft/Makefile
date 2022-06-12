@@ -6,7 +6,7 @@
 #    By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/04 11:36:15 by ryebadok          #+#    #+#              #
-#    Updated: 2021/08/10 09:29:53 by ryebadok         ###   ########.fr        #
+#    Updated: 2022/06/12 09:53:39 by ryebadok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,8 @@ SRCS	=	ft_bzero.c \
 			ft_putnbr_base.c \
 			ft_putarray.c \
 			ft_putintarray.c \
+			ft_array.c \
+			ft_array2.c \
 
 SRCS_BONUS	=	ft_lstnew.c \
 				ft_lstadd_front.c \
