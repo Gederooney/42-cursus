@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 11:13:46 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/11 20:35:58 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/12 10:21:49 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,10 @@ int	ft_error(const char *e_msg){
 
 bool	ft_makecouverts(t_app *room){
 	size_t	i;
-	size_t	*queu;
 
 	i = 0;
-	queu = malloc(sizeof(size_t) * room->g.nbrp);
 	
 	while (i < room->g.nbrp){
-		queu[i] = i;
-		room->tds[i].q = queu;
 		pthread_create(&room->tds[i].p.t_id, NULL, (void *)ft_routine, 
 			(void *)(&(room->tds[i])));
 		pthread_join(room->tds[i].p.t_id, NULL);
