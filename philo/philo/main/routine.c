@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 14:30:57 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/14 01:35:21 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/14 02:17:13 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,16 @@
 #include "utils.h"
 
 bool	ft_can_i_eat(t_thread *t){
-	if (pthread_mutex_lock(&t->fs[t->p->id]))
-		return (false);
-	if (pthread_mutex_lock(&t->fs[((t->p->id) + 1) % t->p->g->nbrp]))
-	{
-		pthread_mutex_unlock(&t->fs[t->p->id]);
-		return (false);
+	if(t->p->id % 2){
+		if (pthread_mutex_lock(&t->fs[t->p->id]))
+			return (false);
+	}
+	else if((t->p->id + 1) != t->p->g->nbrp){
+		if (pthread_mutex_lock(&t->fs[t->p->id - 1]))
+			return (false);
+	} else if ((t->p->id + 1) != (t->p->g->nbrp)){
+		if (pthread_mutex_lock(&t->fs[0]))
+			return (false);
 	}
 	return true;
 }
@@ -45,8 +49,12 @@ void	*ft_routine(void *args){
 				t->p->s = 1;
 				printf("philo %d is eating \n", (int)t->p->id);
 				usleep(200 * 1000);
-				pthread_mutex_unlock(&t->fs[t->p->id]);
-				pthread_mutex_unlock(&t->fs[((t->p->id) + 1) % t->p->g->nbrp]);
+				if (t->p->id % 2)
+					pthread_mutex_unlock(&t->fs[t->p->id]);
+				else if (t->p->id + 1 != t->p->g->nbrp)
+					pthread_mutex_unlock(&t->fs[t->p->id - 1]);
+				else
+					pthread_mutex_unlock(&t->fs[0]);
 			}
 		}
 		else if (t->p->s == 1){

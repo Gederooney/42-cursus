@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 11:13:46 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/14 01:28:21 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/14 01:59:24 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ bool	ft_makecouverts(t_app *room){
 		room->tds[i]->q = queu;
 		pthread_create(&room->tds[i]->p->t_id, NULL, (void *)ft_routine, 
 			(void *)((room->tds[i])));
-		usleep(100);
 		i++;
 	}
 	i = 0;
