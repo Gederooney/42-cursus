@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 08:55:53 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/11 18:13:56 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/14 00:05:34 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef	struct s_p{
 	size_t			id;
 	size_t			nom;
 	pthread_t		t_id;
-	size_t			*s;
+	size_t			s;
 }	t_p;
 
 /*
@@ -62,7 +62,7 @@ typedef	struct s_p{
 */
 typedef	struct s_thread
 {
-	t_p				p;
+	t_p				*p;
 	size_t			*q;
 	pthread_mutex_t	*fs;
 	pthread_mutex_t	s;
@@ -75,7 +75,7 @@ typedef	struct s_thread
 */
 typedef	struct s_app
 {
-	t_thread	*tds;
+	t_thread	**tds;
 	t_arg		g;
 }	t_app;
 
