@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 08:55:53 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/14 00:05:34 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/14 22:36:51 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,13 @@ typedef struct s_arg
 	s: state;
 	g: args
 	nom: number of meal
+	lm:	last meal
 */
 typedef	struct s_p{
 	t_arg			*g;
 	size_t			id;
 	size_t			nom;
+	size_t			lm;
 	pthread_t		t_id;
 	size_t			s;
 }	t_p;

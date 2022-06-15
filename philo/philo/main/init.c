@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 14:02:05 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/14 00:36:04 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/15 00:32:53 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,18 @@ t_p	*ft_init_single(size_t id, t_arg *g){
 	p->nom = 0;
 	p->g = g;
 	p->s = 0;
+	p->nom = 0;
+	p->lm = 0;
 	return (p);
 }
 
 bool	ft_init(t_app *room, t_arg *g){
 	size_t		i;
-	pthread_mutex_t	fs[g->nbrp];
+	pthread_mutex_t	*fs;
 	pthread_mutex_t	qc;
 
 	i = 0;
+	fs = malloc(sizeof(pthread_mutex_t) * g->nbrp);
 	room->tds = malloc(sizeof(t_thread *) * g->nbrp);
 	room->g = *g;
 	if (pthread_mutex_init(&qc, NULL))
@@ -38,8 +41,7 @@ bool	ft_init(t_app *room, t_arg *g){
 			room->tds[i] =malloc(sizeof(t_thread) * 1);
 			room->tds[i]->p = malloc(sizeof(t_p) * 1);
 			room->tds[i]->p = ft_init_single(i, g);
-			if (pthread_mutex_init(&fs[i], NULL))
-				printf("this is the fucking error");
+			pthread_mutex_init(&fs[i], NULL);
 			room->tds[i]->fs = fs;
 			room->tds[i]->qc = qc;
 			i++;
