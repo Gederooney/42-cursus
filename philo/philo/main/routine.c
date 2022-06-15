@@ -14,15 +14,13 @@
 #include "philo.h"
 #include "utils.h"
 
-
-
 bool	ft_eating_even(t_thread *t){
 	if (!(t->p->id % 2)){
 		if (!pthread_mutex_lock(&t->fs[t->p->id])){
-			printf("philo %d has taken a fork \n", (int)t->p->id + 1);
+			printf("%dms philo %d has taken a fork \n", (int)((ft_get_time() - t->t) / 1000), (int)t->p->id + 1);
 			if (!pthread_mutex_lock(&t->fs[t->p->id + 1])){
-				printf("philo %d has taken a fork \n", (int)t->p->id + 1);
-				printf("philo %d is eating \n", (int)t->p->id + 1);
+				printf("%dms philo %d has taken a fork \n",(int)((ft_get_time() - t->t) / 1000), (int)t->p->id + 1);
+				printf("%dms philo %d is eating \n", (int)((ft_get_time() - t->t) / 1000), (int)t->p->id + 1);
 				t->p->s++;
 				t->p->nom++;
 				usleep(1000 * t->p->g->tte);
@@ -33,10 +31,10 @@ bool	ft_eating_even(t_thread *t){
 	}
 	else {
 		if (!pthread_mutex_lock(&t->fs[t->p->id - 1])){
-			printf("philo %d has taken a fork \n", (int)t->p->id + 1);
+			printf("%dms philo %d has taken a fork \n", (int)((ft_get_time() - t->t) / 1000), (int)t->p->id + 1);
 			if (!pthread_mutex_lock(&t->fs[t->p->id])){
-				printf("philo %d has taken a fork \n", (int)t->p->id + 1);
-				printf("philo even %d is eating \n", (int)t->p->id + 1);
+				printf("%dms philo %d has taken a fork \n",(int)((ft_get_time() - t->t) / 1000), (int)t->p->id + 1);
+				printf("%dms philo even %d is eating \n",(int)((ft_get_time() - t->t) / 1000), (int)t->p->id + 1);
 				t->p->s++;
 				t->p->nom++;
 				usleep(1000 * t->p->g->tte);
@@ -51,10 +49,10 @@ bool	ft_eating_even(t_thread *t){
 bool	ft_eating_odd(t_thread *t){
 	if (!(t->p->id % 2) && (t->p->id + 1 != t->p->g->nbrp)){
 		if (!pthread_mutex_lock(&t->fs[t->p->id])){
-			printf("philo %d has taken a fork \n", (int)t->p->id + 1);
+			printf("%dms philo %d has taken a fork \n",(int)((ft_get_time() - t->t) / 1000), (int)t->p->id + 1);
 			if (!pthread_mutex_lock(&t->fs[t->p->id + 1])){
-				printf("philo %d has taken a fork \n", (int)t->p->id + 1);
-				printf("philo %d is eating \n", (int)t->p->id + 1);
+				printf("%dms philo %d has taken a fork \n", (int)((ft_get_time() - t->t) / 1000), (int)t->p->id + 1);
+				printf("%dms philo %d is eating \n", (int)((ft_get_time() - t->t) / 1000), (int)t->p->id + 1);
 				t->p->s++;
 				t->p->nom++;
 				usleep(1000 * t->p->g->tte);
@@ -65,10 +63,10 @@ bool	ft_eating_odd(t_thread *t){
 	}
 	else if (!(t->p->id % 2)){
 		if (!pthread_mutex_lock(&t->fs[0])){
-			printf("philo %d has taken a fork \n", (int)t->p->id + 1);
+			printf("%dms philo %d has taken a fork \n", (int)((ft_get_time() - t->t) / 1000), (int)t->p->id + 1);
 			if (!pthread_mutex_lock(&t->fs[t->p->id])){
-				printf("philo %d has taken a fork \n", (int)t->p->id + 1);
-				printf("philo %d is eating \n", (int)t->p->id + 1);
+				printf("%dms philo %d has taken a fork \n", (int)((ft_get_time() - t->t) / 1000), (int)t->p->id + 1);
+				printf("%dms philo %d is eating \n", (int)((ft_get_time() - t->t) / 1000), (int)t->p->id + 1);
 				t->p->s++;
 				t->p->nom++;
 				usleep(1000 * t->p->g->tte);
@@ -79,10 +77,10 @@ bool	ft_eating_odd(t_thread *t){
 	}
 	else if ((t->p->id % 2)){
 		if (!pthread_mutex_lock(&t->fs[t->p->id - 1])){
-			printf("philo %d has taken a fork \n", (int)t->p->id + 1);
+			printf("%dms philo %d has taken a fork \n",(int)((ft_get_time() - t->t) / 1000), (int)t->p->id + 1);
 			if (!pthread_mutex_lock(&t->fs[t->p->id])){
-				printf("philo %d has taken a fork \n", (int)t->p->id + 1);
-				printf("philo %d is eating \n", (int)t->p->id + 1);
+				printf("%dms philo %d has taken a fork \n",(int)((ft_get_time() - t->t) / 1000), (int)t->p->id + 1);
+				printf("%dms philo %d is eating \n",(int)((ft_get_time() - t->t) / 1000), (int)t->p->id + 1);
 				t->p->s++;
 				t->p->nom++;
 				usleep(1000 * t->p->g->tte);
@@ -93,7 +91,6 @@ bool	ft_eating_odd(t_thread *t){
 	}
 	return true;
 }
-
 
 bool	ft_eating(t_thread *t){
 	pthread_mutex_lock(&t->qc);
@@ -107,13 +104,13 @@ bool	ft_eating(t_thread *t){
 }
 
 bool	ft_thinking(t_thread *t){
-	printf("philo %d is thinking \n", (int)t->p->id + 1);
+	printf("%dms philo %d is thinking \n",(int)((ft_get_time() - t->t) / 1000), (int)t->p->id + 1);
 	t->p->s++;
 	return (true);
 }
 
 bool	ft_sleeping(t_thread *t){
-	printf("philo %d is sleeping \n", (int)t->p->id + 1);
+	printf("%dms philo %d is sleeping \n",(int)((ft_get_time() - t->t) / 1000), (int)t->p->id + 1);
 	t->p->s = 0;
 	usleep(1000 * t->p->g->tts);
 	return (true);

@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 08:55:53 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/15 07:37:51 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/15 08:14:14 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ typedef	struct s_p{
 	fs -> all forks
 	s -> mutex to lock when modiding sensibles data
 	qc -> queu control
-	t -> time struct
+	t -> start time
 */
 typedef	struct s_thread
 {
@@ -70,7 +70,7 @@ typedef	struct s_thread
 	pthread_mutex_t	*fs;
 	pthread_mutex_t	s;
 	pthread_mutex_t	qc;
-	struct timeval	t;
+	long long		t;
 }	t_thread;
 
 
