@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 11:13:46 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/14 01:59:24 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/15 07:40:33 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,14 @@ size_t	*ft_make_queu(t_arg *g){
 bool	ft_makecouverts(t_app *room){
 	size_t	i;
 	size_t	*queu;
+	struct timeval	time;
 
 	i = 0;
 	queu = ft_make_queu(&room->g);
+	gettimeofday(&time, NULL);
 	while (i < room->g.nbrp){
 		room->tds[i]->q = queu;
+		// room->tds[i]->t = time;
 		pthread_create(&room->tds[i]->p->t_id, NULL, (void *)ft_routine, 
 			(void *)((room->tds[i])));
 		i++;
@@ -75,7 +78,6 @@ bool	ft_dinner(t_arg *g){
 		ft_makecouverts(&room);
 		return (true);
 	}
-		// printf("%d\n", (int) g->nbrp);
 	return (false);
 }
 
