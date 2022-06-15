@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 14:30:57 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/15 01:02:31 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/15 01:05:55 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	ft_add_to_queu(t_thread *t){
 bool	ft_eating_even(t_thread *t){
 	if (!(t->p->id % 2)){
 		if (!pthread_mutex_lock(&t->fs[t->p->id])){
-			printf("philo even %d is eating \n", (int)t->p->id);
+			printf("philo even %d is eating \n", (int)t->p->id + 1);
 			t->p->s++;
 			usleep(1000 * 600);
 			pthread_mutex_unlock(&t->fs[t->p->id]);
@@ -92,7 +92,7 @@ bool	ft_eating_even(t_thread *t){
 	}
 	else {
 		if (!pthread_mutex_lock(&t->fs[t->p->id - 1])){
-			printf("philo even %d is eating \n", (int)t->p->id);
+			printf("philo even %d is eating \n", (int)t->p->id + 1);
 			t->p->s++;
 			usleep(1000 * 600);
 			pthread_mutex_unlock(&t->fs[t->p->id - 1]);
