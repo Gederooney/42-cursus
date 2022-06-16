@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 08:55:53 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/15 08:14:14 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/15 21:43:15 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,18 @@
 # include <stdbool.h>
 # include <sys/time.h>
 
+typedef enum e_state
+{
+	eating,
+	sleeping,
+	thinking
+}	t_state;
+
+typedef enum e_life
+{
+	living,
+	dead
+}	t_life;
 /*
 	nbrp: number of philosophers
 	ttd:  time to die
@@ -41,18 +53,21 @@ typedef struct s_arg
 	t_id: thread id;
 	o_f: own fork
 	s_f: sibbling fork
-	s: state;
+	st: state
+	l: life
 	g: args
 	nom: number of meal
 	lm:	last meal
 */
-typedef	struct s_p{
+typedef	struct s_p
+{
 	t_arg			*g;
 	size_t			id;
 	size_t			nom;
 	size_t			lm;
 	pthread_t		t_id;
-	size_t			s;
+	t_life			l;
+	t_state			st;
 }	t_p;
 
 /*
@@ -70,6 +85,7 @@ typedef	struct s_thread
 	pthread_mutex_t	*fs;
 	pthread_mutex_t	s;
 	pthread_mutex_t	qc;
+	pthread_mutex_t	printer;
 	long long		t;
 }	t_thread;
 

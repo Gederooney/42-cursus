@@ -21,7 +21,7 @@ bool	ft_eating_even(t_thread *t){
 			if (!pthread_mutex_lock(&t->fs[t->p->id + 1])){
 				printf("%dms philo %d has taken a fork \n",(int)((ft_get_time() - t->t) / 1000), (int)t->p->id + 1);
 				printf("%dms philo %d is eating \n", (int)((ft_get_time() - t->t) / 1000), (int)t->p->id + 1);
-				t->p->s++;
+				t->p->st = sleeping;
 				t->p->nom++;
 				usleep(1000 * t->p->g->tte);
 				pthread_mutex_unlock(&t->fs[t->p->id + 1]);
@@ -35,7 +35,7 @@ bool	ft_eating_even(t_thread *t){
 			if (!pthread_mutex_lock(&t->fs[t->p->id])){
 				printf("%dms philo %d has taken a fork \n",(int)((ft_get_time() - t->t) / 1000), (int)t->p->id + 1);
 				printf("%dms philo even %d is eating \n",(int)((ft_get_time() - t->t) / 1000), (int)t->p->id + 1);
-				t->p->s++;
+				t->p->st = sleeping;
 				t->p->nom++;
 				usleep(1000 * t->p->g->tte);
 				pthread_mutex_unlock(&t->fs[t->p->id]);
@@ -53,7 +53,7 @@ bool	ft_eating_odd(t_thread *t){
 			if (!pthread_mutex_lock(&t->fs[t->p->id + 1])){
 				printf("%dms philo %d has taken a fork \n", (int)((ft_get_time() - t->t) / 1000), (int)t->p->id + 1);
 				printf("%dms philo %d is eating \n", (int)((ft_get_time() - t->t) / 1000), (int)t->p->id + 1);
-				t->p->s++;
+				t->p->st = sleeping;
 				t->p->nom++;
 				usleep(1000 * t->p->g->tte);
 				pthread_mutex_unlock(&t->fs[t->p->id + 1]);
@@ -67,7 +67,7 @@ bool	ft_eating_odd(t_thread *t){
 			if (!pthread_mutex_lock(&t->fs[t->p->id])){
 				printf("%dms philo %d has taken a fork \n", (int)((ft_get_time() - t->t) / 1000), (int)t->p->id + 1);
 				printf("%dms philo %d is eating \n", (int)((ft_get_time() - t->t) / 1000), (int)t->p->id + 1);
-				t->p->s++;
+				t->p->st = sleeping;
 				t->p->nom++;
 				usleep(1000 * t->p->g->tte);
 				pthread_mutex_unlock(&t->fs[t->p->id]);
@@ -81,7 +81,7 @@ bool	ft_eating_odd(t_thread *t){
 			if (!pthread_mutex_lock(&t->fs[t->p->id])){
 				printf("%dms philo %d has taken a fork \n",(int)((ft_get_time() - t->t) / 1000), (int)t->p->id + 1);
 				printf("%dms philo %d is eating \n",(int)((ft_get_time() - t->t) / 1000), (int)t->p->id + 1);
-				t->p->s++;
+				t->p->st = sleeping;
 				t->p->nom++;
 				usleep(1000 * t->p->g->tte);
 				pthread_mutex_unlock(&t->fs[t->p->id]);
@@ -92,27 +92,75 @@ bool	ft_eating_odd(t_thread *t){
 	return true;
 }
 
+// bool	ft_eating(t_thread *t){
+// 	pthread_mutex_lock(&t->qc);
+// 	if ((t->p->g->nbrp % 2))
+// 		ft_eating_odd(t);
+// 	else
+// 		ft_eating_even(t);
+	
+// 	pthread_mutex_unlock(&t->qc);
+// 	return (true);
+// }
+
 bool	ft_eating(t_thread *t){
 	pthread_mutex_lock(&t->qc);
-	if ((t->p->g->nbrp % 2))
-		ft_eating_odd(t);
-	else
-		ft_eating_even(t);
-	
+	if (!pthread_mutex_lock(&t->fs[t->p->id])){
+		if (t->p->id + 1 != t->p->g->nbrp)
+		{
+			if (!pthread_mutex_lock(&t->fs[t->p->id + 1]))
+			{
+				ft_printer(t);
+				usleep(1000 * t->p->g->tte);
+				t->p->st = sleeping;
+				t->p->nom++;
+				pthread_mutex_unlock(&t->fs[t->p->id + 1]);
+				pthread_mutex_unlock(&t->fs[t->p->id]);
+				pthread_mutex_unlock(&t->qc);
+				return (true);
+			}
+		}
+		else
+		{
+			if (!pthread_mutex_lock(&t->fs[0]))
+			{
+				ft_printer(t);
+				usleep(1000 * t->p->g->tte);
+				t->p->st = sleeping;
+				t->p->nom++;
+				pthread_mutex_unlock(&t->fs[0]);
+				pthread_mutex_unlock(&t->fs[t->p->id]);
+				pthread_mutex_unlock(&t->qc);
+				return (true);
+			}
+		}
+		pthread_mutex_unlock(&t->fs[t->p->id]);
+		pthread_mutex_unlock(&t->qc);
+		return (false);
+	}
 	pthread_mutex_unlock(&t->qc);
-	return (true);
+	return false;
 }
 
 bool	ft_thinking(t_thread *t){
-	printf("%dms philo %d is thinking \n",(int)((ft_get_time() - t->t) / 1000), (int)t->p->id + 1);
-	t->p->s++;
+	size_t	i;
+
+	i = 0; 
+	t->p->st = eating;
+	ft_printer(t);
 	return (true);
 }
 
 bool	ft_sleeping(t_thread *t){
-	printf("%dms philo %d is sleeping \n",(int)((ft_get_time() - t->t) / 1000), (int)t->p->id + 1);
-	t->p->s = 0;
-	usleep(1000 * t->p->g->tts);
+	size_t	i;
+
+	i = 0;
+	ft_printer(t);
+	while (i < (1000 * t->p->g->tts)){
+		usleep(10);
+		i += 10;
+	}
+	t->p->st = thinking;
 	return (true);
 }
 
@@ -121,13 +169,13 @@ void	*ft_routine(void *args){
 
 	t = (t_thread *)args;
 	while (1){
-		if (t->p->s == 0){
+		if (t->p->st == eating){
 			if (!ft_eating(t))
 				return (false);
 		}
-		else if (t->p->s == 2)
+		else if (t->p->st == sleeping)
 			ft_sleeping(t);
-		else if (t->p->s == 1)
+		else if (t->p->st == thinking)
 			ft_thinking(t);
 	}
 }
