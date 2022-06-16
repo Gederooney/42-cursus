@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 08:55:53 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/15 21:43:15 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/16 03:50:45 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef enum e_life
 	living,
 	dead
 }	t_life;
+
 /*
 	nbrp: number of philosophers
 	ttd:  time to die
@@ -58,16 +59,20 @@ typedef struct s_arg
 	g: args
 	nom: number of meal
 	lm:	last meal
+	ls:	last sleep
+	lt	last think
 */
-typedef	struct s_p
+typedef struct s_p
 {
-	t_arg			*g;
-	size_t			id;
-	size_t			nom;
-	size_t			lm;
-	pthread_t		t_id;
-	t_life			l;
-	t_state			st;
+	t_arg		*g;
+	size_t		id;
+	size_t		nom;
+	size_t		lm;
+	size_t		ls;
+	size_t		lt;
+	pthread_t	t_id;
+	t_life		l;
+	t_state		st;
 }	t_p;
 
 /*
@@ -78,17 +83,15 @@ typedef	struct s_p
 	qc -> queu control
 	t -> start time
 */
-typedef	struct s_thread
+typedef struct s_thread
 {
 	t_p				*p;
-	size_t			*q;
 	pthread_mutex_t	*fs;
 	pthread_mutex_t	s;
-	pthread_mutex_t	qc;
-	pthread_mutex_t	printer;
+	pthread_mutex_t	*qc;
+	pthread_mutex_t	*printer;
 	long long		t;
 }	t_thread;
-
 
 /*
 	tds: all the threads in this process

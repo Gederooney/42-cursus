@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 11:13:46 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/15 21:18:05 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/16 04:33:52 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,47 +34,29 @@ int	ft_error(const char *e_msg){
 	return (1);
 }
 
-size_t	*ft_make_queu(t_arg *g){
-	size_t	*queu;
+bool	ft_makecouverts(t_app *table){
 	size_t	i;
-
-	queu = malloc(sizeof(size_t) * g->nbrp);
-	i = 0;
-	if (!queu)
-		return (NULL);
-	while (i < g->nbrp){
-		queu[i] = i;
-		i++;
-	}
-	return (queu);	
-}
-
-bool	ft_makecouverts(t_app *room){
-	size_t	i;
-	size_t	*queu;
+	long long	t;
 
 	i = 0;
-	queu = ft_make_queu(&room->g);
-	while (i < room->g.nbrp){
-		room->tds[i]->q = queu;
-		room->tds[i]->t = ft_get_time();
-		pthread_create(&room->tds[i]->p->t_id, NULL, (void *)ft_routine, 
-			(void *)((room->tds[i])));
-			usleep(10);
+	t = ft_get_time();
+	while (i < table->g.nbrp)
+	{
+		pthread_create(&table->tds[i]->p->t_id, NULL, (void *)ft_routine, 
+			(void *)((table->tds[i])));
 		i += 1;
 	}
 	i = 0;
-	while (i < room->g.nbrp)
-		pthread_join(room->tds[i++]->p->t_id, NULL);
-	
+	while (i < table->g.nbrp)
+		pthread_join(table->tds[i++]->p->t_id, NULL);
 	return(true);
 }
 
 bool	ft_dinner(t_arg *g){
-	t_app	room;
+	t_app	table;
 
-	if (ft_init(&room, g)){
-		ft_makecouverts(&room);
+	if (ft_init(&table, g)){
+		ft_makecouverts(&table);
 		return (true);
 	}
 	return (false);

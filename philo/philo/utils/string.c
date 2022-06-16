@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 10:29:28 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/15 21:50:10 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/16 04:53:28 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,22 @@ int	ft_charprt_len(char **p)
 }
 
 void	ft_printer(t_thread *t){
-	pthread_mutex_lock(&t->printer);
-	if (t->p->st == eating){
-		printf("%d philo %d has taken a fork \n",(int)((ft_get_time() - t->t) / 1000), (int)t->p->id + 1);
-		printf("%d philo %d has taken a fork \n",(int)((ft_get_time() - t->t) / 1000), (int)t->p->id + 1);
-		printf("%d philo %d is eating \n",(int)((ft_get_time() - t->t) / 1000), (int)t->p->id + 1);
+	if (!pthread_mutex_lock(t->printer))
+	{	
+		if (t->p->st == eating){
+			printf("%d philo %d has taken a fork \n",
+				(int)(t->p->lm), (int)t->p->id + 1);
+			printf("%d philo %d has taken a fork \n",
+				(int)(t->p->lm), (int)t->p->id + 1);
+			printf("%d philo %d is eating \n",
+				(int)(t->p->lm), (int)t->p->id + 1);
+		}
+		else if (t->p->st == sleeping)
+			printf("%d philo %d is sleeping \n",
+				(int)(t->p->ls), (int)t->p->id + 1);
+		else if (t->p->st == thinking)
+			printf("%d philo %d is thinking \n",
+				(int)(t->p->lt), (int)t->p->id + 1);
+		pthread_mutex_unlock(t->printer);
 	}
-	else if (t->p->st == sleeping)
-		printf("%d philo %d is sleeping \n",(int)((ft_get_time() - t->t) / 1000), (int)t->p->id + 1);
-	else if (t->p->st == thinking)
-		printf("%d philo %d is thinking \n",(int)((ft_get_time() - t->t) / 1000), (int)t->p->id + 1);
-	pthread_mutex_unlock(&t->printer);
 }

@@ -6,7 +6,7 @@
 #    By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/27 08:15:39 by ryebadok          #+#    #+#              #
-#    Updated: 2022/06/11 12:55:44 by ryebadok         ###   ########.fr        #
+#    Updated: 2022/06/16 01:00:58 by ryebadok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ HFILES = philo.h utils.h
 
 # -------------------------------- C FILES ---------------------------------- #
 MAIN_C = main.c parse.c init.c routine.c
-UTILS_C = atoi.c string.c rotate.c array.c time.c
+UTILS_C = atoi.c string.c rotate.c array.c time.c feed.c
 
 # -------------------------------- DIRECTORIES PATHS ------------------------ #
 MAIN_DIR = main
