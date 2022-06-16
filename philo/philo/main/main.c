@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 11:13:46 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/16 04:33:52 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/16 05:09:54 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,11 @@ int	ft_error(const char *e_msg){
 
 bool	ft_makecouverts(t_app *table){
 	size_t	i;
-	long long	t;
 
 	i = 0;
-	t = ft_get_time();
-	while (i < table->g.nbrp)
-	{
-		pthread_create(&table->tds[i]->p->t_id, NULL, (void *)ft_routine, 
-			(void *)((table->tds[i])));
-		i += 1;
-	}
+	while (i++ < table->g.nbrp)
+		pthread_create(&table->tds[i - 1]->p->t_id, NULL, (void *)ft_routine, 
+			(void *)((table->tds[i - 1])));
 	i = 0;
 	while (i < table->g.nbrp)
 		pthread_join(table->tds[i++]->p->t_id, NULL);
