@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 08:55:53 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/17 11:10:08 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/17 16:21:58 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef enum e_state
 
 typedef enum e_life
 {
-	living,
+	alive,
 	dead
 }	t_life;
 
@@ -82,6 +82,7 @@ typedef struct s_p
 	s -> mutex to lock when modiding sensibles data
 	qc -> queu control
 	t -> start time
+	gs -> game state;
 */
 typedef struct s_thread
 {
@@ -89,19 +90,22 @@ typedef struct s_thread
 	pthread_mutex_t	*fs;
 	pthread_mutex_t	s;
 	pthread_mutex_t	*qc;
-	pthread_mutex_t	*printer;
+	t_life			*gs;
 	long long		t;
 }	t_thread;
 
 /*
 	tds: all the threads in this process
+	gs: game state
 */
 typedef struct s_app
 {
 	t_thread	**tds;
 	t_arg		g;
+	t_life		*gs;
 }	t_app;
 
+void	*ft_servor_routine(void *t);
 void	*ft_routine(void *args);
 bool	ft_init(t_app *room, t_arg *g);
 int		ft_error(const char *e_msg);
