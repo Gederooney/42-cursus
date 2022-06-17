@@ -6,13 +6,14 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 14:02:05 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/16 03:55:20 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/17 11:20:18 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-t_p	*ft_init_single(size_t id, t_arg *g){
+t_p	*ft_init_single(size_t id, t_arg *g)
+{
 	t_p		*p;
 
 	p = malloc(sizeof(t_p) * 1);
@@ -28,10 +29,9 @@ t_p	*ft_init_single(size_t id, t_arg *g){
 	return (p);
 }
 
-// void	ft_allocate_memory(t_app *table){}
-
-bool	ft_init(t_app *room, t_arg *g){
-	size_t		i;
+bool	ft_init(t_app *room, t_arg *g)
+{
+	size_t			i;
 	pthread_mutex_t	*fs;
 	pthread_mutex_t	*qc;
 	pthread_mutex_t	*printer;
@@ -46,9 +46,11 @@ bool	ft_init(t_app *room, t_arg *g){
 		return (false);
 	if (pthread_mutex_init(printer, NULL))
 		return (false);
-	if (room && room->tds ){
-		while (i < g->nbrp){
-			room->tds[i] =malloc(sizeof(t_thread) * 1);
+	if (room && room->tds)
+	{
+		while (i < g->nbrp)
+		{
+			room->tds[i] = malloc(sizeof(t_thread) * 1);
 			room->tds[i]->p = ft_init_single(i, g);
 			pthread_mutex_init(&fs[i], NULL);
 			room->tds[i]->fs = fs;
@@ -59,4 +61,3 @@ bool	ft_init(t_app *room, t_arg *g){
 	}
 	return (true);
 }
- 

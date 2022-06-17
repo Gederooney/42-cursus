@@ -6,13 +6,14 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 14:09:12 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/11 20:21:37 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/17 11:25:11 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-void	ft_print_arr(size_t count, size_t *array){
+void	ft_print_arr(size_t count, size_t *array)
+{
 	size_t	i;
 
 	i = 0;

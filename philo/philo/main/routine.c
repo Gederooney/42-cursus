@@ -1,4 +1,3 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -7,26 +6,28 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 14:30:57 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/15 01:05:55 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/17 11:21:58 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 #include "utils.h"
 
-bool	ft_sleeping(t_thread *t){
+bool	ft_sleeping(t_thread *t)
+{
 	size_t	i;
 
 	i = (size_t)ft_get_time();
 	ft_printer(t);
-	while ((ft_get_time() - i) <  t->p->g->tts)
+	while ((ft_get_time() - i) < t->p->g->tts)
 		usleep(t->p->g->tts / 10);
 	t->p->lt = (size_t)(ft_get_time() - t->t);
 	t->p->st = thinking;
 	return (true);
 }
 
-bool	ft_thinking(t_thread *t){
+bool	ft_thinking(t_thread *t)
+{
 	size_t	i;
 
 	i = 0;
@@ -35,15 +36,18 @@ bool	ft_thinking(t_thread *t){
 	return (true);
 }
 
-void	*ft_routine(void *args){
+void	*ft_routine(void *args)
+{
 	t_thread	*t;
 
 	t = (t_thread *)args;
 	t->t = ft_get_time();
-	while (1){
-		if(t->p->g->nbre && t->p->nom == t->p->g->nbre)
+	while (1)
+	{
+		if (t->p->g->nbre && t->p->nom == t->p->g->nbre)
 			return (t);
-		if (t->p->st == eating){
+		if (t->p->st == eating)
+		{
 			if (!ft_eating(t))
 				return (false);
 		}

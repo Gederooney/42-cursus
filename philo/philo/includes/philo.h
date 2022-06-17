@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 08:55:53 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/16 03:50:45 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/17 11:10:08 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ typedef struct s_thread
 /*
 	tds: all the threads in this process
 */
-typedef	struct s_app
+typedef struct s_app
 {
 	t_thread	**tds;
 	t_arg		g;

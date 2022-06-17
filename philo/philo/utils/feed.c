@@ -6,13 +6,14 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 00:59:15 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/16 05:04:16 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/17 11:24:47 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-bool	ft_feed_not_last(t_thread *t){
+bool	ft_feed_not_last(t_thread *t)
+{
 	size_t	i;
 
 	i = ft_get_time();
@@ -29,7 +30,8 @@ bool	ft_feed_not_last(t_thread *t){
 	return (true);
 }
 
-bool	ft_feed_last(t_thread *t){
+bool	ft_feed_last(t_thread *t)
+{
 	size_t	i;
 
 	i = (size_t)ft_get_time();
@@ -46,7 +48,8 @@ bool	ft_feed_last(t_thread *t){
 	return (true);
 }
 
-bool	ft_eating(t_thread *t){
+bool	ft_eating(t_thread *t)
+{
 	pthread_mutex_lock(t->qc);
 	if (!pthread_mutex_lock(&t->fs[t->p->id]))
 	{
@@ -65,5 +68,5 @@ bool	ft_eating(t_thread *t){
 		return (false);
 	}
 	pthread_mutex_unlock(t->qc);
-	return false;
+	return (false);
 }

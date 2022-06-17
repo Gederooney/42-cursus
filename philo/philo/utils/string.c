@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 10:29:28 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/16 05:45:37 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/17 11:28:09 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,18 @@ int	ft_charprt_len(char **p)
 }
 
 void	ft_printer(t_thread *t){
-	if (!pthread_mutex_lock(t->printer))
-	{	
-		if (t->p->st == eating){
-			printf("%d %d has taken a fork \n",
-				(int)(t->p->lm), (int)t->p->id + 1);
-			printf("%d %d has taken a fork \n",
-				(int)(t->p->lm), (int)t->p->id + 1);
-			printf("%d %d is eating \n",
-				(int)(t->p->lm), (int)t->p->id + 1);
-		}
-		else if (t->p->st == sleeping)
-			printf("%d %d is sleeping \n",
-				(int)(t->p->ls), (int)t->p->id + 1);
-		else if (t->p->st == thinking)
-			printf("%d %d is thinking \n",
-				(int)(t->p->lt), (int)t->p->id + 1);
-		pthread_mutex_unlock(t->printer);
+	if (t->p->st == eating){
+		printf("%d %d has taken a fork \n",
+			(int)(t->p->lm), (int)t->p->id + 1);
+		printf("%d %d has taken a fork \n",
+			(int)(t->p->lm), (int)t->p->id + 1);
+		printf("%d %d is eating \n",
+			(int)(t->p->lm), (int)t->p->id + 1);
 	}
+	else if (t->p->st == sleeping)
+		printf("%d %d is sleeping \n",
+			(int)(t->p->ls), (int)t->p->id + 1);
+	else if (t->p->st == thinking)
+		printf("%d %d is thinking \n",
+			(int)(t->p->lt), (int)t->p->id + 1);
 }

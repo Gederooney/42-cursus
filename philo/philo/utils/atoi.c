@@ -6,19 +6,21 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 10:00:37 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/01 12:39:28 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/17 11:23:36 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-bool	ft_only_num(const char *s){
-	while (*s){
+bool	ft_only_num(const char *s)
+{
+	while (*s)
+	{
 		if (*s < '0' || *s > '9')
-			return false;
+			return (false);
 		s++;
 	}
-	return true;
+	return (true);
 }
 
 static int	ft_isspace(int c)

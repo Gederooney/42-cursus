@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 11:56:41 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/16 04:17:10 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/17 11:15:17 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@
 size_t	ft_get_arg(const char *s)
 {
 	if (ft_only_num(s))
-		return (size_t)ft_atoi(s);
+		return ((size_t)ft_atoi(s));
 	return (0);
 }
 
-int	ft_parse(int n, char **v, t_arg *g){
-	if (n == 5 || n == 6){
+int	ft_parse(int n, char **v, t_arg *g)
+{
+	if (n == 5 || n == 6)
+	{
 		g->nbrp = ft_get_arg(v[0]);
 		g->ttd = ft_get_arg(v[1]);
 		g->tte = ft_get_arg(v[2]);
