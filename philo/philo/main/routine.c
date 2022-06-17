@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 14:30:57 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/17 16:54:09 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/17 17:26:44 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,28 +44,24 @@ void	*ft_routine(void *args)
 	t->t = ft_get_time();
 	while (1)
 	{
-		// if (t->gs == alive)
-		// {
+		if (*t->gs == alive){
 			if (t->p->g->nbre && t->p->nom == t->p->g->nbre)
 				return (t);
-			if ( t->p->st == eating)
+			if ( t->p->st == eating && *t->gs != dead)
 			{
 				if (!ft_eating(t))
 					return (false);
 			}
-			else if ( t->p->st == sleeping)
+			else if ( t->p->st == sleeping && *t->gs != dead)
 				ft_sleeping(t);
-			else if ( t->p->st == thinking)
+			else if ( t->p->st == thinking && *t->gs != dead)
 				ft_thinking(t);
-			else 
-				return (t);
 		}
-		// else
-			return (t);
-	// }
+		return (NULL);
+	}
 }
 
-void	*ft_servor_routine(void * t)
+void	*ft_controller(void * t)
 {
 	t_app	*table;
 	size_t	i;
@@ -85,6 +81,14 @@ void	*ft_servor_routine(void * t)
 			{
 				table->tds[i]->p->l = dead;
 				printf("%d is dead %d\n", (int)table->tds[i]->p->id + 1, (int)table->tds[i]->p->lm);
+				*table->gs = dead;
+				return (NULL);
+			}
+			else if (c_time > (table->tds[i]->p->lm + table->tds[i]->p->g->ttd)
+				&& table->tds[i]->p->lm)
+			{
+				table->tds[i]->p->l = dead;
+				printf("%d %d is dead\n", (int)(c_time - s_time), (int)table->tds[i]->p->id + 1);
 				*table->gs = dead;
 				return (NULL);
 			}

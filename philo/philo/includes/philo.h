@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 08:55:53 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/17 16:21:58 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/17 17:04:25 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ typedef struct s_app
 	t_life		*gs;
 }	t_app;
 
-void	*ft_servor_routine(void *t);
+void	*ft_controller(void *t);
 void	*ft_routine(void *args);
 bool	ft_init(t_app *room, t_arg *g);
 int		ft_error(const char *e_msg);

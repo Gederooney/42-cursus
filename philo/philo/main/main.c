@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 11:13:46 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/17 14:39:21 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/17 17:13:51 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,17 @@ int	ft_error(const char *e_msg)
 bool	ft_makecouverts(t_app *table)
 {
 	size_t		i;
-	pthread_t	servor;
+	pthread_t	controller;
 
 	i = 0;
 	while (i++ < table->g.nbrp)
 		pthread_create(&table->tds[i - 1]->p->t_id, NULL, (void *)ft_routine,
 			(void *)((table->tds[i - 1])));
-	pthread_create(&servor, NULL, (void *)ft_servor_routine, (void *)table);
+	pthread_create(&controller, NULL, (void *)ft_controller, (void *)table);
 	i = 0;
 	while (i < table->g.nbrp)
 		pthread_join(table->tds[i++]->p->t_id, NULL);
-	pthread_join(servor, NULL);
+	pthread_join(controller, NULL);
 	return (true);
 }
 
