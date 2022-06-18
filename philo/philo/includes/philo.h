@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 08:55:53 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/17 17:04:25 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/18 06:21:57 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ typedef struct s_thread
 	pthread_mutex_t	s;
 	pthread_mutex_t	*qc;
 	t_life			*gs;
-	long long		t;
+	size_t			t;
 }	t_thread;
 
 /*
@@ -111,5 +111,6 @@ bool	ft_init(t_app *room, t_arg *g);
 int		ft_error(const char *e_msg);
 int		ft_parse(int n, char **v, t_arg *args);
 bool	ft_makecouverts(t_app *app);
+void	ft_clean(t_app *t);
 
 #endif

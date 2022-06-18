@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 00:59:15 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/17 13:52:01 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/18 00:11:39 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@ bool	ft_eating(t_thread *t)
 {
 	pthread_mutex_lock(t->qc);
 	pthread_mutex_lock(&t->fs[t->p->id]);
-	printf("%d %d has taken first fork \n",
+	printf("%d %d has taken fork \n",
 		(int)(ft_get_time() - t->t), (int)t->p->id + 1);
 	if (t->p->id + 1 != t->p->g->nbrp)
 	{
 		pthread_mutex_lock(&t->fs[t->p->id + 1]);
-		printf("%d %d has taken second fork \n",
+		printf("%d %d has taken fork \n",
 			(int)(ft_get_time() - t->t), (int)t->p->id + 1);
 		pthread_mutex_unlock(t->qc);
 		t->p->lm = (size_t)(ft_get_time());
@@ -62,11 +62,29 @@ bool	ft_eating(t_thread *t)
 	else
 	{
 		pthread_mutex_lock(&t->fs[0]);
-		printf("%d %d has taken second fork \n",
+		printf("%d %d has taken fork \n",
 			(int)(ft_get_time() - t->t), (int)t->p->id + 1);
 		pthread_mutex_unlock(t->qc);
 		t->p->lm = (size_t)(ft_get_time());
 		return (ft_feed_last(t));
 	}
 	return (false);
+}
+
+void	ft_clean(t_app *t)
+{
+	size_t	i;
+	size_t	c;
+
+	i = 0;
+	c = t->g.nbrp;
+	free(t->tds[0]->fs);
+	free(t->tds[0]->gs);
+	while (i < c)
+	{
+		free(t->tds[i]->p);
+		free(t->tds[i]);
+		i++;
+	}
+	exit(0);
 }
