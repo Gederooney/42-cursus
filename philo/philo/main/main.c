@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 11:13:46 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/18 06:31:44 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/18 06:51:56 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,29 +35,30 @@ int	ft_error(const char *e_msg){
 }
 
 bool	ft_makecouverts(t_app *table){
-	size_t		i;
+	size_t	i;
+	size_t	s_time;
 	// pthread_t	controller;
 
 	i = 0;
+	s_time = ft_get_time();
 	while (i < table->g.nbrp)
 	{
+		table->tds[i]->t = s_time;
 		pthread_create(&table->tds[i]->p->t_id, NULL, (void *)ft_routine, 
 			(void *)((table->tds[i])));
 		i += 2;
-		usleep(10);
 	}
 	i = 1;
+	usleep(100);
 	while (i < table->g.nbrp)
 	{
+		table->tds[i]->t = s_time;
 		pthread_create(&table->tds[i]->p->t_id, NULL, (void *)ft_routine, 
 			(void *)((table->tds[i])));
 		i += 2;
-		usleep(10);
 	}
-	// pthread_create(&controller, NULL, (void *)ft_controller, (void *)table);
 	while (i < table->g.nbrp)
 		pthread_join(table->tds[i++]->p->t_id, NULL);
-	// pthread_join(controller, NULL);
 	return(true);
 }
 

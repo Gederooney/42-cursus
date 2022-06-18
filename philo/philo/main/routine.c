@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 14:30:57 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/18 06:23:36 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/18 07:02:38 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,20 +37,20 @@ void	*ft_routine(void *args)
 	t_thread	*t;
 
 	t = (t_thread *)args;
-	t->t = ft_get_time();
-	while (*t->gs != dead)
+	t->p->lm = ft_get_time();
+	while (1)
 	{
-			if (t->p->g->nbre && t->p->nom == t->p->g->nbre)
-				return (t);
-			if ( t->p->st == eating && *t->gs != dead)
-			{
-				if (!ft_eating(t))
-					return (false);
-			}
-			else if ( t->p->st == sleeping && *t->gs != dead)
-				ft_sleeping(t);
-			else if ( t->p->st == thinking && *t->gs != dead)
-				ft_thinking(t);
+		if (t->p->g->nbre && t->p->nom == t->p->g->nbre)
+			return (t);
+		else if (t->p->st == eating)
+		{
+			if (!ft_eating(t))
+				return (false);
+		}
+		else if ( t->p->st == sleeping)
+			ft_sleeping(t);
+		else if ( t->p->st == thinking)
+			ft_thinking(t);
 	}
 	return (NULL);
 }
