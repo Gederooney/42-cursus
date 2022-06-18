@@ -6,11 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 08:55:53 by ryebadok          #+#    #+#             */
-<<<<<<< Updated upstream
-/*   Updated: 2022/06/18 06:21:57 by ryebadok         ###   ########.fr       */
-=======
-/*   Updated: 2022/06/18 09:30:15 by ryebadok         ###   ########.fr       */
->>>>>>> Stashed changes
+/*   Updated: 2022/06/18 10:17:58 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
