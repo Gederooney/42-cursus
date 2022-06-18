@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 10:29:28 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/18 10:18:35 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/18 11:53:24 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,11 @@ void	ft_printer(t_thread *t)
 	if (*t->gs == alive)
 	{
 		if (t->p->st == eating)
+		{
+			
 			printf("%d %d is eating \n",
 				(int)(c_time - t->t), (int)t->p->id + 1);
+		}
 		else if (t->p->st == sleeping)
 			printf("%d %d is sleeping \n",
 				(int)(c_time - t->t), (int)t->p->id + 1);

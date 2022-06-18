@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 14:30:57 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/18 10:24:02 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/18 12:58:02 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,38 @@ void	*ft_routine(void *args)
 	t->p->lm = ft_get_time() - t->t;
 	while (1)
 	{
-		if ((t->p->g->nbre && t->p->nom == t->p->g->nbre) || *t->gs == dead)
+		if (t->p->st == eating 
+			&& t->p->g->nbre && t->p->nom == t->p->g->nbre)
 			return (t);
-		if (t->p->st == eating)
+		else if (t->p->st == eating)
 			ft_eating(t);
 		else if (t->p->st == sleeping)
 			ft_sleeping(t);
 		else if (t->p->st == thinking)
 			ft_thinking(t);
+		if (*t->gs == dead)
+			return (t);
 	}
 	return (NULL);
+}
+
+bool	ft_stop(t_app *table){
+	size_t	stop;
+	size_t	i;
+
+	stop = 0;
+	i = 0;
+	while (i < table->g.nbrp)
+	{
+		// if (i == 1)	
+		// 	printf("%d\n", (int)stop);
+		if (table->tds[i]->p->nom == table->g.nbre)
+			stop++;
+		i++;
+	}
+	if (stop == table->g.nbrp)
+		return (true);
+	return (false);
 }
 
 void	*ft_controller(void *arg)
@@ -68,20 +90,20 @@ void	*ft_controller(void *arg)
 	{
 		i = 0;
 		c_time = ft_get_time() - s_time;
+		if (table->g.nbre && ft_stop(table))
+			return (NULL);
 		while (i < table->g.nbrp)
 		{
-			if (t->p->nom != t->p->g->nbre)
+			t = table->tds[i];
+			if((c_time - t->p->lm > (t->p->g->ttd)) && t->p->st != eating)
 			{
-				t = table->tds[i];
-				if(c_time - t->p->lm > t->p->g->ttd)
-				{
-					table->tds[i]->p->l = dead;
-					printf("%d %d is dead\n", (int)c_time, (int)table->tds[i]->p->id + 1);
-					*table->gs = dead;
-					ft_clean(table);
-					return (NULL);
-				}
+				table->tds[i]->p->l = dead;
+				printf("%d %d is dead\n", (int)(c_time), (int)table->tds[i]->p->id + 1);
+				*table->gs = dead;
+				ft_clean(table);
+				return (NULL);
 			}
+			usleep(200);
 			i++;
 		}
 	}
