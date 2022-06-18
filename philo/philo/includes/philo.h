@@ -6,7 +6,11 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 08:55:53 by ryebadok          #+#    #+#             */
+<<<<<<< Updated upstream
 /*   Updated: 2022/06/18 06:21:57 by ryebadok         ###   ########.fr       */
+=======
+/*   Updated: 2022/06/18 09:30:15 by ryebadok         ###   ########.fr       */
+>>>>>>> Stashed changes
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +72,6 @@ typedef struct s_p
 	size_t		id;
 	size_t		nom;
 	size_t		lm;
-	size_t		ls;
-	size_t		lt;
-	pthread_t	t_id;
 	t_life		l;
 	t_state		st;
 }	t_p;
@@ -92,6 +93,7 @@ typedef struct s_thread
 	pthread_mutex_t	*qc;
 	t_life			*gs;
 	size_t			t;
+	pthread_t		t_id;
 }	t_thread;
 
 /*
@@ -105,7 +107,7 @@ typedef struct s_app
 	t_life		*gs;
 }	t_app;
 
-void	*ft_controller(void *t);
+void	*ft_controller(void *arg);
 void	*ft_routine(void *args);
 bool	ft_init(t_app *room, t_arg *g);
 int		ft_error(const char *e_msg);

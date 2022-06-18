@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 11:13:46 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/18 06:51:56 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/18 10:15:40 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,41 +34,52 @@ int	ft_error(const char *e_msg){
 	return (1);
 }
 
-bool	ft_makecouverts(t_app *table){
-	size_t	i;
-	size_t	s_time;
-	// pthread_t	controller;
+bool	ft_serve(t_app *table)
+{
+	size_t		i;
+	size_t		s_time;
+	pthread_t	controller;
 
 	i = 0;
 	s_time = ft_get_time();
 	while (i < table->g.nbrp)
 	{
 		table->tds[i]->t = s_time;
-		pthread_create(&table->tds[i]->p->t_id, NULL, (void *)ft_routine, 
+		pthread_create(&table->tds[i]->t_id, NULL, (void *)ft_routine,
 			(void *)((table->tds[i])));
-		i += 2;
+			i += 2;
 	}
-	i = 1;
 	usleep(100);
+	i = 1;
 	while (i < table->g.nbrp)
 	{
 		table->tds[i]->t = s_time;
-		pthread_create(&table->tds[i]->p->t_id, NULL, (void *)ft_routine, 
+		pthread_create(&table->tds[i]->t_id, NULL, (void *)ft_routine,
 			(void *)((table->tds[i])));
-		i += 2;
+			i += 2;
 	}
+	pthread_create(&controller, NULL, (void *)ft_controller, (void *)table);
+	i = 0;
 	while (i < table->g.nbrp)
-		pthread_join(table->tds[i++]->p->t_id, NULL);
-	return(true);
+		pthread_join(table->tds[i++]->t_id, NULL);
+	pthread_join(controller, NULL);
+	return (true);
 }
 
-bool	ft_dinner(t_arg *g){
-	t_app	table;
+bool	ft_dinner(t_arg *g)
+{
+	t_app	*table;
 
-	if (ft_init(&table, g)){
-		ft_makecouverts(&table);
-		return (true);
+	table = malloc(sizeof(t_app));
+	if (!table)
+		return (false);
+	if (!ft_init(table, g))
+	{
+		free(table);
+		return (false);
 	}
+	if (!ft_serve(table))
+		return (false);
 	return (false);
 }
 
@@ -77,8 +88,9 @@ int main(int n, char **v){
 
 	if (n == 5 || n == 6)
 	{
-		if (ft_parse(n, v + 1, &arg)){
-			if (ft_dinner(&arg))
+		if (ft_parse(n, v + 1, &arg))
+		{
+			if (!ft_dinner(&arg))
 				return (0);
 			return (1);
 		}
