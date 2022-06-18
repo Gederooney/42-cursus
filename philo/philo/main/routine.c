@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 14:30:57 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/18 10:17:22 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/18 10:24:02 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,17 @@ void	*ft_controller(void *arg)
 		c_time = ft_get_time() - s_time;
 		while (i < table->g.nbrp)
 		{
-			t = table->tds[i];
-			if(c_time - t->p->lm > t->p->g->ttd)
+			if (t->p->nom != t->p->g->nbre)
 			{
-				table->tds[i]->p->l = dead;
-				printf("%d %d %d %d is dead\n", (int)c_time, (int)t->p->lm, (int)t->p->g->ttd, (int)table->tds[i]->p->id + 1);
-				*table->gs = dead;
-				ft_clean(table);
-				return (NULL);
+				t = table->tds[i];
+				if(c_time - t->p->lm > t->p->g->ttd)
+				{
+					table->tds[i]->p->l = dead;
+					printf("%d %d is dead\n", (int)c_time, (int)table->tds[i]->p->id + 1);
+					*table->gs = dead;
+					ft_clean(table);
+					return (NULL);
+				}
 			}
 			i++;
 		}
