@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 11:13:46 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/20 19:46:36 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/21 13:30:01 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ bool	ft_serve(t_app *table)
 {
 	size_t		i;
 	size_t		s_time;
-	// pthread_t	controller;
 
 	i = 0;
 	s_time = ft_get_time();
@@ -58,11 +57,9 @@ bool	ft_serve(t_app *table)
 			(void *)((table->tds[i])));
 			i += 2;
 	}
-	// pthread_create(&controller, NULL, (void *)ft_controller, (void *)table);
 	i = 0;
 	while (i < table->g.nbrp)
 		pthread_join(table->tds[i++]->t_id, NULL);
-	// pthread_join(controller, NULL);
 	return (true);
 }
 

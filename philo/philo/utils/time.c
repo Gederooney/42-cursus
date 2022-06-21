@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 11:31:55 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/21 08:37:11 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/21 13:05:01 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,6 @@ bool	ft_n_usleep(t_thread *t, size_t now, size_t count)
 						(int)(t->p->id + 1));
 				*t->gs = dead;
 				pthread_mutex_unlock(t->qc);
-				if (t->p->id + 1 == t->p->g->nbrp)
-					pthread_mutex_unlock(&t->fs[0]);
-				else
-					pthread_mutex_unlock(&t->fs[t->p->id + 1]);
-				pthread_mutex_unlock(&t->fs[t->p->id]);
 				return (false);
 			}
 			usleep(t->p->g->tte / 10);

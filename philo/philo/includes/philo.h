@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 08:55:53 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/20 19:15:52 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/21 13:23:15 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,5 +113,6 @@ int		ft_error(const char *e_msg);
 int		ft_parse(int n, char **v, t_arg *args);
 bool	ft_makecouverts(t_app *app);
 void	ft_clean(t_app *t);
+void	*ft_one_thread(t_thread *t);
 
 #endif
