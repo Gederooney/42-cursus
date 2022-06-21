@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 11:31:55 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/21 13:05:01 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/21 15:21:48 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,3 @@ bool	ft_n_usleep(t_thread *t, size_t now, size_t count)
 	return (false);
 }
 
-void	ft_usleep(size_t t)
-{
-	size_t	s_time;
-	
-	s_time = ft_get_time();
-	while (ft_get_time() - s_time < t)
-		usleep(SLEEP_INTERVAL);
-}

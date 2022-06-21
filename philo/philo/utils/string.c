@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 10:29:28 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/20 23:38:21 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/21 15:22:03 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,28 +30,16 @@ int	ft_charprt_len(char **p)
 	return (i);
 }
 
-void	ft_printer(t_thread *t)
+bool	ft_print_status(t_thread *t, size_t now)
 {
-	size_t	c_time;
-
-	c_time = ft_get_time();
-	// pthread_mutex_lock(t->qc);
-	if (*t->gs == alive)
+	if (ft_check_death(t) && *t->gs == alive)
 	{
-		if (t->p->st == hasthought)
-		{
-			printf("%d %d is eating \n",
-				(int)(c_time - t->t), (int)t->p->id + 1);
-		}
-		else if (t->p->st == haseateen)
-			printf("%d %d is sleeping \n",
-				(int)(c_time - t->t), (int)t->p->id + 1);
-		else if (t->p->st == hasslept)
-		{
-			t->p->st = hasthought;
-			printf("%d %d is thinking \n",
-				(int)(c_time - t->t), (int)t->p->id + 1);
-		}
+		pthread_mutex_lock(t->qc);
+		printf("%d %d has taken fork \n", (int)(now - t->t), (int)t->p->id + 1);
+		printf("%d %d has taken fork \n", (int)(now - t->t), (int)t->p->id + 1);
+		printf("%d %d is eating \n", (int)(now - t->t), (int)t->p->id + 1);
+		pthread_mutex_unlock(t->qc);
+		return (true);
 	}
-	// pthread_mutex_unlock(t->qc);
+	return (false);
 }

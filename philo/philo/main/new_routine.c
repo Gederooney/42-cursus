@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 08:47:02 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/21 13:54:56 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/21 15:14:56 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,7 @@ bool	ft_eat(t_thread *t)
 		else
 			pthread_mutex_lock(&t->fs[t->p->id + 1]);
 		now = ft_get_time();
-		if (ft_check_death(t) && *t->gs == alive)
-		{
-			printf("%d %d has taken fork \n", (int)(now - t->t), (int)t->p->id + 1);
-			printf("%d %d has taken fork \n", (int)(now - t->t), (int)t->p->id + 1);
-			printf("%d %d is eating \n", (int)(now - t->t), (int)t->p->id + 1);
-		}
+		ft_print_status(t, now);
 		t->p->lm = now - t->t;
 		ft_n_usleep(t, now, t->p->g->tte);
 		t->p->nom++;
@@ -67,9 +62,13 @@ bool	ft_sleep(t_thread *t)
 	size_t	now;
 
 	now = ft_get_time();
-	if (*t->gs == alive)
+	if (ft_check_death(t) && *t->gs == alive)
+	{
+		pthread_mutex_lock(t->qc);
 		printf("%d %d is sleeping \n", 
 			(int)(now - t->t), (int)(t->p->id + 1));
+		pthread_mutex_unlock(t->qc);
+	}
 	ft_n_usleep(t, now, t->p->g->tts);
 	t->p->st = hasslept;
 	return (true);
@@ -80,8 +79,9 @@ bool	ft_think(t_thread *t)
 	size_t	now;
 
 	now = ft_get_time();
-	if (*t->gs == alive)
-		printf("%d %d is thinking \n", (int)(now - t->t), (int)(t->p->id + 1));
+	if (ft_check_death(t) && *t->gs == alive)
+		printf("%d %d is thinking \n",
+			(int)(now - t->t), (int)(t->p->id + 1));
 	t->p->st = hasthought;
 	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 11:13:46 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/21 13:30:01 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/21 15:57:22 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,35 +63,18 @@ bool	ft_serve(t_app *table)
 	return (true);
 }
 
-bool	ft_dinner(t_arg *g)
-{
-	t_app	*table;
-
-	table = malloc(sizeof(t_app));
-	if (!table)
-		return (false);
-	if (!ft_init(table, g))
-	{
-		free(table);
-		return (false);
-	}
-	if (!ft_serve(table))
-		return (false);
-	return (false);
-}
-
 int main(int n, char **v){
 	t_arg	arg;
+	t_app	table;
 
 	if (n == 5 || n == 6)
 	{
-		if (ft_parse(n, v + 1, &arg))
-		{
-			if (!ft_dinner(&arg))
-				return (0);
-			return (1);
-		}
-		return (ft_error("Au moins un de vos arguments est incorrecte..."));
+		if (!ft_parse(n, v + 1, &arg))
+			return (ft_error("Au moins un de vos arguments est incorrecte."));
+		if (!ft_init(&table, &arg))
+			return (ft_error("Erreur lors de l'initialisation."));
+		ft_serve(&table);
+		return (1);
 	}
 		return (ft_error("Il vous faut au moins 4 et au plus 5 arguments"));
 }

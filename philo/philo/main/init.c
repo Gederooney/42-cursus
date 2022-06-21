@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 14:02:05 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/20 17:05:29 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/21 15:37:02 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ bool	ft_prepare_couverts(t_app *table, t_arg *g)
 	fs = malloc(sizeof(pthread_mutex_t) * g->nbrp);
 	if (!fs)
 	{
-		// need to destroy threads here;
+		free(table->tds[0]->qc);
 		return (false);
 	}
 	while (i < g->nbrp)
@@ -98,7 +98,10 @@ bool	ft_init(t_app *table, t_arg *g)
 	if (!qc)
 		return (false);
 	if (!ft_prepare_threads(table, g))
+	{
+		free(qc);
 		return (false);
+	}
 	if (!ft_prepare_couverts(table, g))
 		return (false);
 	if (!ft_prepare_table(table, g))
