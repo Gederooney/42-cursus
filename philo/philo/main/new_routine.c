@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 08:47:02 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/21 13:18:28 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/21 13:37:03 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	*ft_new_routine(void *arg)
 		return (ft_one_thread(t));
 	while (*t->gs == alive)
 	{
-		if (*t->gs == dead)
+		if (*t->gs == dead || t->p->nom == t->p->g->nbre)
 			return ((void *)false);
 		if (t->p->st == hasthought && *t->gs == alive && !ft_eat(t))
 			return ((void *)false);
