@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 00:59:15 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/18 12:09:35 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/20 18:37:52 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 bool	ft_feed_not_last(t_thread *t)
 {
 	ft_printer(t);
+	t->p->lm = ft_get_time() - t->t;
+	// t->p->st = sleeping;
 	ft_usleep(t->p->g->tte);
-	t->p->st = sleeping;
 	t->p->nom++;
 	pthread_mutex_unlock(&t->fs[t->p->id + 1]);
 	pthread_mutex_unlock(&t->fs[t->p->id]);
@@ -26,8 +27,9 @@ bool	ft_feed_not_last(t_thread *t)
 bool	ft_feed_last(t_thread *t)
 {
 	ft_printer(t);
+	t->p->lm = ft_get_time() - t->t;
+	// t->p->st = sleeping;
 	ft_usleep(t->p->g->tte);
-	t->p->st = sleeping;
 	t->p->nom++;
 	pthread_mutex_unlock(&t->fs[0]);
 	pthread_mutex_unlock(&t->fs[t->p->id]);
@@ -41,7 +43,6 @@ bool	ft_eating(t_thread *t)
 	{
 		pthread_mutex_lock(&t->fs[t->p->id + 1]);
 		if (*t->gs == alive){
-			t->p->lm = ft_get_time() - t->t;
 			printf("%d %d has taken first fork \n",
 			(int)(ft_get_time() - t->t), (int)t->p->id + 1);
 			printf("%d %d has taken second fork \n",
@@ -54,7 +55,6 @@ bool	ft_eating(t_thread *t)
 		pthread_mutex_lock(&t->fs[0]);
 		if (*t->gs == alive)
 		{
-			t->p->lm = ft_get_time() - t->t;
 			printf("%d %d has taken first fork \n",
 				(int)(ft_get_time() - t->t), (int)t->p->id + 1);
 			printf("%d %d has taken second fork \n",

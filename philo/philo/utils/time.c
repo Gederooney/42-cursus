@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 11:31:55 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/18 10:17:49 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/20 08:38:44 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ void	ft_usleep(size_t t)
 	
 	s_time = ft_get_time();
 	while (ft_get_time() - s_time < t)
-		usleep(t / 10);
+		usleep(SLEEP_INTERVAL);
 }

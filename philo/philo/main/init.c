@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 14:02:05 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/18 09:25:46 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/20 17:05:29 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_p	*ft_init_single(size_t id, t_arg *g)
 	p->nom = 0;
 	p->g = g;
 	p->l = alive;
-	p->st = eating;
+	p->st = hasthought;
 	p->lm = 0;
 	return (p);
 }

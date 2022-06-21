@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 08:55:53 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/18 10:17:58 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/20 19:15:52 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@
 # include <stdbool.h>
 # include <sys/time.h>
 
+# define SLEEP_INTERVAL 25
+
 typedef enum e_state
 {
-	eating,
-	sleeping,
-	thinking
+	haseateen,
+	hasslept,
+	hasthought
 }	t_state;
 
 typedef enum e_life
@@ -105,6 +107,7 @@ typedef struct s_app
 
 void	*ft_controller(void *arg);
 void	*ft_routine(void *args);
+void	*ft_new_routine(void *args);
 bool	ft_init(t_app *room, t_arg *g);
 int		ft_error(const char *e_msg);
 int		ft_parse(int n, char **v, t_arg *args);
