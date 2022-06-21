@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 08:58:32 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/18 10:17:43 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/21 08:10:36 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,6 @@ bool		ft_eating(t_thread *t);
 bool		ft_feed_last(t_thread *t);
 bool		ft_feed_not_last(t_thread *t);
 void		ft_usleep(size_t t);
+bool		ft_n_usleep(t_thread *t, size_t now, size_t count);
+
 #endif
