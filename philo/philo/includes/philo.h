@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 08:55:53 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/21 15:19:54 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/22 11:37:32 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,13 @@ typedef struct s_p
 */
 typedef struct s_thread
 {
-	t_p				*p;
+	t_arg		*g;
+	size_t		id;
+	size_t		nom;
+	size_t		lm;
+	t_life		l;
+	t_state		st;
+	// t_p				*p;
 	pthread_mutex_t	*fs;
 	pthread_mutex_t	s;
 	pthread_mutex_t	*qc;
@@ -105,13 +111,14 @@ typedef struct s_app
 	t_life		*gs;
 }	t_app;
 
-void	*ft_new_routine(void *args);
-bool	ft_init(t_app *room, t_arg *g);
 int		ft_error(const char *e_msg);
 int		ft_parse(int n, char **v, t_arg *args);
 bool	ft_makecouverts(t_app *app);
-void	ft_clean(t_app *t);
-void	*ft_one_thread(t_thread *t);
 bool	ft_check_death(t_thread *t);
+bool	ft_init(t_app *room, t_arg *g);
+bool	ft_clean(t_app *t);
+bool	ft_controller(t_app *table);
+void	*ft_routine(void *args);
+void	*ft_one_thread(t_thread *t);
 
 #endif

@@ -6,12 +6,13 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 11:13:46 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/21 15:57:22 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/22 11:38:53 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 #include "utils.h"
+
 void ft_help(void){
 	printf("\n");
 	printf("%s\n", "--help philosophers");
@@ -44,7 +45,7 @@ bool	ft_serve(t_app *table)
 	while (i < table->g.nbrp)
 	{
 		table->tds[i]->t = s_time;
-		pthread_create(&table->tds[i]->t_id, NULL, (void *)ft_new_routine,
+		pthread_create(&table->tds[i]->t_id, NULL, (void *)ft_routine,
 			(void *)((table->tds[i])));
 			i += 2;
 	}
@@ -53,14 +54,21 @@ bool	ft_serve(t_app *table)
 	while (i < table->g.nbrp)
 	{
 		table->tds[i]->t = s_time;
-		pthread_create(&table->tds[i]->t_id, NULL, (void *)ft_new_routine,
+		pthread_create(&table->tds[i]->t_id, NULL, (void *)ft_routine,
 			(void *)((table->tds[i])));
 			i += 2;
 	}
 	i = 0;
 	while (i < table->g.nbrp)
-		pthread_join(table->tds[i++]->t_id, NULL);
+		pthread_detach(table->tds[i++]->t_id);
 	return (true);
+}
+
+bool	ft_clean(t_app *t)
+{
+	free(t->gs);
+	free(t->tds);
+	return true;
 }
 
 int main(int n, char **v){
@@ -74,6 +82,8 @@ int main(int n, char **v){
 		if (!ft_init(&table, &arg))
 			return (ft_error("Erreur lors de l'initialisation."));
 		ft_serve(&table);
+		if (ft_controller(&table))
+			ft_clean(&table);
 		return (1);
 	}
 		return (ft_error("Il vous faut au moins 4 et au plus 5 arguments"));

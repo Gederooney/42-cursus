@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 10:29:28 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/21 15:22:03 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/21 16:40:59 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ bool	ft_print_status(t_thread *t, size_t now)
 	if (ft_check_death(t) && *t->gs == alive)
 	{
 		pthread_mutex_lock(t->qc);
-		printf("%d %d has taken fork \n", (int)(now - t->t), (int)t->p->id + 1);
-		printf("%d %d has taken fork \n", (int)(now - t->t), (int)t->p->id + 1);
-		printf("%d %d is eating \n", (int)(now - t->t), (int)t->p->id + 1);
+		printf("%d %d has taken fork \n", (int)(now - t->t), (int)t->id + 1);
+		printf("%d %d has taken fork \n", (int)(now - t->t), (int)t->id + 1);
+		printf("%d %d is eating \n", (int)(now - t->t), (int)t->id + 1);
 		pthread_mutex_unlock(t->qc);
 		return (true);
 	}

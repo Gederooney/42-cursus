@@ -6,24 +6,19 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 14:02:05 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/21 15:37:02 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/21 16:36:27 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-t_p	*ft_init_single(size_t id, t_arg *g)
+void	ft_init_single(size_t id, t_thread *t)
 {
-	t_p		*p;
-
-	p = malloc(sizeof(t_p) * 1);
-	p->id = id;
-	p->nom = 0;
-	p->g = g;
-	p->l = alive;
-	p->st = hasthought;
-	p->lm = 0;
-	return (p);
+	t->id = id;
+	t->nom = 0;
+	t->l = alive;
+	t->st = hasthought;
+	t->lm = 0;
 }
 
 bool	ft_prepare_threads(t_app *table, t_arg *g)
@@ -41,13 +36,10 @@ bool	ft_prepare_threads(t_app *table, t_arg *g)
 		if (!tds[i])
 		{
 			while (--i)
-			{
-				free(tds[i]->p);
 				free(tds[i]);
-			}
 			return (false);
 		}
-		tds[i]->p = ft_init_single(i, g);
+		ft_init_single(i, tds[i]);
 		i++;
 	}
 	table->tds = tds;
@@ -111,6 +103,7 @@ bool	ft_init(t_app *table, t_arg *g)
 	{
 		table->tds[i]->qc = qc;
 		table->tds[i]->gs = table->gs;
+		table->tds[i]->g = g;
 		i++;
 	}
 	return (true);
