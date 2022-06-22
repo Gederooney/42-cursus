@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 14:02:05 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/21 16:36:27 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/22 13:06:02 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,11 @@ bool	ft_prepare_couverts(t_app *table, t_arg *g)
 	if (!fs)
 	{
 		free(table->tds[0]->qc);
+		while (i++ < g->nbrp)
+			free(table->tds[i - 1]);
 		return (false);
 	}
+	i = 0;
 	while (i < g->nbrp)
 	{
 		pthread_mutex_init(&fs[i], NULL);
@@ -69,10 +72,19 @@ bool	ft_prepare_couverts(t_app *table, t_arg *g)
 
 bool	ft_prepare_table(t_app *table, t_arg *g)
 {
+	size_t	i;
+
+	i = 0;
 	table->gs = malloc(sizeof(t_life));
 	if (!table->gs)
 	{
-		// you need to destroy threads and mutexs here
+		free(table->tds[0]->qc);
+		while (i++ < g->nbrp)
+			pthread_mutex_destroy(&table->tds[i - 1]->fs[i - 1]);
+		free(table->tds[0]->fs);
+		i = 0;
+		while (i++ < g->nbrp)
+			free(table->tds[i - 1]);
 		return (false);
 	}
 	table->g = *g;
