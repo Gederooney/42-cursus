@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 11:13:46 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/22 11:38:53 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/22 12:48:11 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,16 @@ bool	ft_serve(t_app *table)
 
 bool	ft_clean(t_app *t)
 {
+	size_t	i;
+
+	i = 0;
+	while (i++ < t->g.nbrp)
+		pthread_mutex_destroy(&t->tds[i - 1]->fs[i - 1]);
+	i = 0;
+	free(t->tds[0]->fs);
+	free(t->tds[0]->qc);
+	while (i++ < t->g.nbrp)
+		free(t->tds[i - 1]);
 	free(t->gs);
 	free(t->tds);
 	return true;
