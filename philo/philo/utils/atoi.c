@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 10:00:37 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/17 11:23:36 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/23 07:39:07 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,27 @@ int	ft_atoi(const char *str)
 	int	i;
 	int	sign;
 	int	rtn;
+
+	i = 0;
+	sign = 1;
+	rtn = 0;
+	if (!*str)
+		return (0);
+	while (ft_isspace(str[i]))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+		if (str[i++] == '-')
+			sign *= -1;
+	while (ft_isdigit(str[i]))
+		rtn = (rtn * 10) + (str[i++] - '0');
+	return (rtn * sign);
+}
+
+long long	ft_atol(const char *str)
+{
+	int			i;
+	int			sign;
+	long long	rtn;
 
 	i = 0;
 	sign = 1;

@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 13:19:38 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/22 12:29:51 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/23 07:58:06 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ bool	ft_make_death(t_thread *t, t_arg *g, size_t now, int *i)
 	{
 		t->l = dead;
 		*t->gs = dead;
-		printf("%ld %ld is dead \n",
-			now - t->t, t->id + 1);
+		printf("%ld %ld is dead \n", now - t->t, t->id + 1);
 		*i = -1;
 		return (true);
 	}

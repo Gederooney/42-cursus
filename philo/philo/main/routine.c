@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 08:47:02 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/22 11:40:06 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/23 07:59:02 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,7 @@ bool	ft_sleep(t_thread *t)
 	if (ft_check_death(t) && *t->gs == alive)
 	{
 		pthread_mutex_lock(t->qc);
-		printf("%d %d is sleeping \n", 
-			(int)(now - t->t), (int)(t->id + 1));
+		printf("%ld %ld is sleeping \n", (now - t->t), (t->id + 1));
 		pthread_mutex_unlock(t->qc);
 	}
 	ft_n_usleep(t, now, t->g->tts);
@@ -76,8 +75,7 @@ bool	ft_think(t_thread *t)
 
 	now = ft_get_time();
 	if (ft_check_death(t) && *t->gs == alive)
-		printf("%d %d is thinking \n",
-			(int)(now - t->t), (int)(t->id + 1));
+		printf("%ld %ld is thinking \n", (now - t->t), (t->id + 1));
 	t->st = hasthought;
 	return (true);
 }
