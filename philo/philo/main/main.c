@@ -6,17 +6,17 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 11:13:46 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/22 12:48:11 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/27 08:21:58 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 #include "utils.h"
 
-void ft_help(void){
+void	ft_help(void)
+{
 	printf("\n");
-	printf("%s\n", "--help philosophers");
-		printf("\n");
+	printf("%s\n", "--help philosophers \n");
 	printf("%s\n", "usage: ./philo np td te ts nte");
 	printf("\n");
 	printf("%s\n", "Vous devez avoir au moins 4 et au plus 5 arguments");
@@ -29,7 +29,8 @@ void ft_help(void){
 	printf("%s\n", "------- ts : max de fois un philo doit manger: optionel");
 }
 
-int	ft_error(const char *e_msg){
+int	ft_error(const char *e_msg)
+{
 	printf("%s\n", e_msg);
 	ft_help();
 	return (1);
@@ -78,10 +79,11 @@ bool	ft_clean(t_app *t)
 		free(t->tds[i - 1]);
 	free(t->gs);
 	free(t->tds);
-	return true;
+	return (true);
 }
 
-int main(int n, char **v){
+int	main(int n, char **v)
+{
 	t_arg	arg;
 	t_app	table;
 
@@ -96,5 +98,5 @@ int main(int n, char **v){
 			ft_clean(&table);
 		return (1);
 	}
-		return (ft_error("Il vous faut au moins 4 et au plus 5 arguments"));
+	return (ft_error("Il vous faut au moins 4 et au plus 5 arguments"));
 }

@@ -6,50 +6,43 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 08:47:02 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/23 07:59:02 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/27 10:14:36 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 #include "utils.h"
 
-bool	ft_check_death(t_thread *t)
+bool	ft_make_eat(t_thread *t)
 {
 	size_t	now;
 
 	now = 0;
+	pthread_mutex_lock(&t->fs[t->id]);
+	if (t->id + 1 == t->g->nbrp)
+		pthread_mutex_lock(&t->fs[0]);
+	else
+		pthread_mutex_lock(&t->fs[t->id + 1]);
 	now = ft_get_time();
-	if ((t->lm + t->t + t->g->ttd < now))
-		return (false);
+	ft_print_status(t, now);
+	t->lm = now - t->t;
+	ft_n_usleep(t, now, t->g->tte);
+	t->nom++;
+	if (t->id + 1 == t->g->nbrp)
+		pthread_mutex_unlock(&t->fs[0]);
+	else
+		pthread_mutex_unlock(&t->fs[t->id + 1]);
+	pthread_mutex_unlock(&t->fs[t->id]);
+	t->st = haseateen;
 	return (true);
 }
 
 bool	ft_eat(t_thread *t)
 {
-	size_t	now;
-
-	now = 0;
 	if (!ft_check_death(t))
 		return (false);
-	if (t->st == hasthought){
-		pthread_mutex_lock(&t->fs[t->id]);
-		if (t->id + 1 == t->g->nbrp)
-			pthread_mutex_lock(&t->fs[0]);
-		else
-			pthread_mutex_lock(&t->fs[t->id + 1]);
-		now = ft_get_time();
-		ft_print_status(t, now);
-		t->lm = now - t->t;
-		ft_n_usleep(t, now, t->g->tte);
-		t->nom++;
-		if (t->id + 1 == t->g->nbrp)
-			pthread_mutex_unlock(&t->fs[0]);
-		else
-			pthread_mutex_unlock(&t->fs[t->id + 1]);
-		pthread_mutex_unlock(&t->fs[t->id]);
-		t->st = haseateen;
-		return (true);
-	}
+	if (t->st == hasthought)
+		return (ft_make_eat(t));
 	return (false);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 11:31:55 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/22 12:05:43 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/27 08:24:15 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,3 @@ bool	ft_n_usleep(t_thread *t, size_t now, size_t count)
 	}
 	return (false);
 }
-

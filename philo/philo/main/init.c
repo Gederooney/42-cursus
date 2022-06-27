@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 14:02:05 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/22 13:06:02 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/27 08:19:44 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ bool	ft_prepare_threads(t_app *table, t_arg *g)
 
 bool	ft_prepare_couverts(t_app *table, t_arg *g)
 {
-	size_t		i;
+	size_t			i;
 	pthread_mutex_t	*fs;
 
 	i = 0;

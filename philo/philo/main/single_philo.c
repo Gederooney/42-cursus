@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 13:19:38 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/06/23 07:58:06 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/06/27 10:06:42 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	*ft_one_thread(t_thread *t)
 {
-	size_t now;
+	size_t	now;
 
 	now = ft_get_time();
 	pthread_mutex_lock(&t->fs[0]);
@@ -67,12 +67,23 @@ bool	ft_controller(t_app *table)
 				&& table->tds[i]->st == hasthought)
 				nom++;
 			if (ft_full_of_meal(&nom, table, &i))
-				break;
+				break ;
 			if (ft_make_death(table->tds[i], &table->g, now, &i))
-				break;
+				break ;
 			usleep(25);
 			i++;
 		}
 	}
+	return (true);
+}
+
+bool	ft_check_death(t_thread *t)
+{
+	size_t	now;
+
+	now = 0;
+	now = ft_get_time();
+	if ((t->lm + t->t + t->g->ttd < now))
+		return (false);
 	return (true);
 }
