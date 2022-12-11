@@ -6,7 +6,7 @@
 #    By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 18:40:45 by ryebadok          #+#    #+#              #
-#    Updated: 2022/12/02 19:59:57 by ryebadok         ###   ########.fr        #
+#    Updated: 2022/12/03 08:20:06 by ryebadok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,10 +30,10 @@ RMD = rmdir
 OBJ = ofiles
 
 # -------------------------------- Header files ----------------------------- #
-HFILES = phone_book.hpp
+HFILES = Phone_book.hpp Contact.hpp main.hpp
 
 # -------------------------------- CPP FILES ---------------------------------- #
-MAIN_CPP = main.cpp
+MAIN_CPP = main.cpp Contact.cpp Phone_book.cpp
 
 
 # -------------------------------- DIRECTORIES PATHS ------------------------ #

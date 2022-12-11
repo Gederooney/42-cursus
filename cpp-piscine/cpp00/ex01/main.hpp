@@ -1,37 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   main.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/03 07:47:01 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/12/10 17:52:02 by ryebadok         ###   ########.fr       */
+/*   Created: 2022/12/03 08:03:02 by ryebadok          #+#    #+#             */
+/*   Updated: 2022/12/03 08:19:39 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.hpp"
+#ifndef MAIN_HPP
+# define MAIN_HPP
 
-string	get_command(void)
-{
-	string	command = "";
-	cin >> command;
-	cout << command << endl;
-	if (cin.eof())
-	{
-		cout << "here\n";
-		cin.clear();
-		cin.ignore();
-		clearerr(stdin);
-	}
-	cin >> command;
-	cout << command << endl;
-	cout << cin.eof() << endl;
-	return command;
-}
+# include "Contact.hpp"
+# include "Phone_book.hpp"
+# include <iostream>
 
-int main(void)
-{
-	Phone_book	phone_book;
-	get_command();
-}
+using namespace std;
+
+#endif
