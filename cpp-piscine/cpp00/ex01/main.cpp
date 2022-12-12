@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 07:47:01 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/12/10 17:52:02 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/12/11 20:33:22 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,39 @@
 string	get_command(void)
 {
 	string	command = "";
-	cin >> command;
-	cout << command << endl;
-	if (cin.eof())
+	cout << "Entrez une command entre ADD SEARCH ET EXIT  ";
+	while (getline(cin, command))
 	{
-		cout << "here\n";
-		cin.clear();
-		cin.ignore();
-		clearerr(stdin);
+		if (command == "SEARCH" || command == "ADD" || command == "EXIT")
+			return command;
+		cout << "Entrez une commande correcte  ";
 	}
-	cin >> command;
-	cout << command << endl;
-	cout << cin.eof() << endl;
-	return command;
+	return "ERROR";
 }
 
-int main(void)
+int main(int n, char **v)
 {
 	Phone_book	phone_book;
-	get_command();
+	string command;
+
+	if (n == 2)
+	{
+		command = v[1];
+		while (1)
+		{
+			if (command == "ERROR" || command == "EXIT")
+				return (0);
+			else {
+				if (command == "ADD")
+					phone_book.add_contact();
+				else if (command == "SEARCH")
+					phone_book.search_contact();
+				if (!cin.eof())
+					command = get_command();
+				else 
+					break;
+			}
+		}
+	}
+	return 0;
 }

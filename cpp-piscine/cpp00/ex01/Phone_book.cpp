@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 08:11:35 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/12/10 17:41:30 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/12/11 21:02:32 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,36 +16,38 @@ Phone_book::Phone_book(void){
 	count = 0;
 }
 
-int	Phone_book::parse_command()
+int	Phone_book::add_contact(void)
 {
-	string	command = "";
-	if(command != "EXIT")
+	Contact contact = get_contact_infos();
+	if (!cin.eof())
 	{
-		if (cin.eof())
-		{
-			cout << "this \n";
-		}
-		else if (command == "ADD")
-			add_contact();
-		else if (command == "SEARCH")
-			search_contact();
-		cout << "Enrter a command: ";
-		cin >> command;
-		parse_command();
+		contact.set_id(count);
+		if (count < 8)
+			contact_list[count] = contact;
+		else
+			contact_list[count % 8] = contact;
+		count++;
+		return (1);
 	}
 	return (0);
 }
 
-void	Phone_book::add_contact(void)
-{
-	Contact contact = get_contact_infos();
-	contact.set_id(count);
-	
-	if (count < 8)
-		contact_list[count] = contact;
+string	Phone_book::parse_input(string input){
+	size_t	i = 0;
+
+	while ( i < input.size())
+	{
+		if(input[i] == ' ')
+		{
+			i++;
+			continue;
+		}
+		break;
+	}
+	if (i == input.size())
+		return ("");
 	else
-		contact_list[count % 8] = contact;
-	count++;
+		return input.substr(i);
 }
 
 Contact	Phone_book::get_contact_infos(void)
@@ -57,10 +59,12 @@ Contact	Phone_book::get_contact_infos(void)
 
 	step = 0;
 	user_input = "";
-	while (step != 4)
+	while (step != 4 && !cin.eof())
 	{
 		cout << "Enter a " + fields[step] + " ";
-		
+		getline(cin, user_input);
+		if (user_input.empty())
+			continue;
 		tmp.set_field(fields[step], user_input);
 		step++;
 	}
