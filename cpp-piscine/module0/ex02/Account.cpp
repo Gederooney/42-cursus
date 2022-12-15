@@ -6,11 +6,13 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:10:58 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/12/12 14:17:36 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/12/12 15:17:29 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Account.hpp"
+
+using namespace std;
 
 Account::Account(int initial_deposit)
 {
@@ -20,6 +22,7 @@ Account::Account(int initial_deposit)
 	_nbWithdrawals = 0;
 	_nbAccounts++;
 	_totalAmount += initial_deposit;
+	cout << "index:" << _accountIndex << ";amount:" << _amount << ";created" << endl;
 	_displayTimestamp();
 }
 
