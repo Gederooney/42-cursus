@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 07:47:01 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/12/15 13:15:52 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/12/15 14:37:56 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,19 @@
 # include "PhoneBook.hpp"
 # include <iostream>
 
-
-static string	get_command(void)
+static void	menu(void)
 {
-	string	command = "";
+	std::cout << "Available commands:" << std::endl;
+	std::cout << "ADD" << std::endl;
+	std::cout << "SEARCH" << std::endl;
+	std::cout << "EXIT" << std::endl;
+}
+
+static std::string	get_command(void)
+{
+	std::string	command = "";
+	
+	menu();
 	std::cout << "Enter a command  ";
 	while (getline(std::cin, command))
 	{
@@ -28,21 +37,11 @@ static string	get_command(void)
 	return "ERROR";
 }
 
-static void	menu(void)
-{
-	std::cout << "Available commands:" << std::endl;
-	std::cout << "ADD" << std::endl;
-	std::cout << "SEARCH" << std::endl;
-	std::cout << "EXIT" << std::endl;
-	std::cout << std::endl;
-}
-
 int main(void)
 {
 	PhoneBook	PhoneBook;
-	string command;
+	std::string command;
 
-	menu();
 	while (1)
 	{
 		if (command == "ERROR" || command == "EXIT")

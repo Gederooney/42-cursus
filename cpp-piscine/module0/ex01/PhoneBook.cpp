@@ -22,7 +22,7 @@ PhoneBook::~PhoneBook(void)
 	// nothing to destruct for now
 }
 
-int	isOnlyDigits(string str)
+int	isOnlyDigits(std::string str)
 {
 	size_t	i;
 
@@ -53,7 +53,7 @@ int	PhoneBook::add_contact(void)
 	return (0);
 }
 
-string	PhoneBook::parse_input(string input){
+std::string	PhoneBook::parse_input(std::string input){
 	size_t	i = 0;
 
 	while ( i < input.size())
@@ -79,8 +79,8 @@ string	PhoneBook::parse_input(string input){
 
 Contact	PhoneBook::get_contact_infos(void)
 {
-	string	user_input;
-	string	fields[4] = {"nickName","firstName", "lastName", "phoneNumber"};
+	std::string	user_input;
+	std::string	fields[4] = {"nickName","firstName", "lastName", "phoneNumber"};
 	int		step;
 	Contact	tmp;
 
@@ -105,7 +105,7 @@ void	PhoneBook::search_contact()
 {
 	int	i, id;
 	int	limit;
-	string	user_input;
+	std::string	user_input;
 
 	i = 0;
 	if (count == 0)

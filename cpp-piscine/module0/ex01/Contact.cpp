@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 07:56:18 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/12/15 13:18:50 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/12/15 14:23:39 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ Contact::~Contact(void)
 // this is the global setter of the class
 // its assign each property of the class a value depending on 
 // the param received.
-void	Contact::set_field(string field, string value)
+void	Contact::set_field(std::string field, std::string value)
 {
 	if (field == "nickName")
 		this->nick_name = value;
@@ -57,7 +57,7 @@ int		Contact::get_id(void){
 // this function takes a string and format it to return a new 
 // string ready to be displayed according to what is asked in the
 // exercice
-string	Contact::trimOrAddSpaces(string s)
+std::string	Contact::trimOrAddSpaces(std::string s)
 {
 	if(s.size() > 10)
 		return (s.substr(0, 9) + ".");
@@ -72,7 +72,7 @@ string	Contact::trimOrAddSpaces(string s)
 // function that displays a contact
 void	Contact::display(void)
 {
-	std::cout << "         " + to_string(id) + "|" << trimOrAddSpaces(first_name) +"|" << trimOrAddSpaces(last_name)+"|" << trimOrAddSpaces(nick_name)<< std::endl;
+	std::cout << "         " + std::to_string(id) + "|" << trimOrAddSpaces(first_name) +"|" << trimOrAddSpaces(last_name)+"|" << trimOrAddSpaces(nick_name)<< std::endl;
 }
 
 // this function displays the contact infos one line at the time

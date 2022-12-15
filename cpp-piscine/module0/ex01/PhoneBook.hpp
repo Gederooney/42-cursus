@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 08:12:13 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/12/15 11:32:28 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/12/15 14:24:56 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 
 # include "Contact.hpp"
 
-using namespace std;
-
-int	isOnlyDigits(string str);
+int	isOnlyDigits(std::string str);
 
 class PhoneBook
 {
@@ -29,7 +27,7 @@ class PhoneBook
 		PhoneBook(void);
 		~PhoneBook(void);
 		int		add_contact(void);
-		string	parse_input(string input);
+		std::string	parse_input(std::string input);
 		void	search_contact(void);
 		Contact	get_contact_infos(void);
 };

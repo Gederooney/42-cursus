@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 07:47:25 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/12/15 13:28:35 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/12/15 14:25:39 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,21 @@ class Contact{
 
 	private:
 		int		id;
-		string	nick_name;
-		string	first_name;
-		string	last_name;
-		string	phone_number;
+		std::string	nick_name;
+		std::string	first_name;
+		std::string	last_name;
+		std::string	phone_number;
 	
 	public:
 		Contact(void);
 		~Contact(void);
 		
-		void	set_field(string field, string value);
+		void	set_field(std::string field, std::string value);
 		int		get_id(void);
 		void	set_id(int i);
 		void	display(void);
 		void	displayLineByLine(void);
-		string	trimOrAddSpaces(string s);
+		std::string	trimOrAddSpaces(std::string s);
 };
 
 #endif

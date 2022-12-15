@@ -6,7 +6,7 @@
 #    By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 18:40:45 by ryebadok          #+#    #+#              #
-#    Updated: 2022/12/12 14:12:14 by ryebadok         ###   ########.fr        #
+#    Updated: 2022/12/15 15:18:58 by ryebadok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ OBJ = ofiles
 HFILES = Account.hpp
 
 # -------------------------------- CPP FILES ---------------------------------- #
-MAIN_CPP = main.cpp Account.cpp tests.cpp
+MAIN_CPP = Account.cpp tests.cpp
 
 
 # -------------------------------- DIRECTORIES PATHS ------------------------ #
