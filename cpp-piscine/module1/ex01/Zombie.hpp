@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 16:21:16 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/12/12 16:22:25 by ryebadok         ###   ########.fr       */
+/*   Created: 2022/12/12 16:00:43 by ryebadok          #+#    #+#             */
+/*   Updated: 2022/12/16 09:40:00 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,16 @@ class Zombie
 		std::string _name;
 
 	public:
+		Zombie();
 		Zombie(std::string name);
-		// ~Zombie();
-		void announce();
+		~Zombie();
+
+		void	announce();
+		void	setName(std::string name);
 };
 
-Zombie* zombieHorde( int N, std::string name );
+void	randomChump( std::string name );
+Zombie*	newZombie( std::string name );
+Zombie*	zombieHorde( int N, std::string name );
 
 #endif
