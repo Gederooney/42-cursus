@@ -6,7 +6,7 @@
 #    By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 07:50:04 by ryebadok          #+#    #+#              #
-#    Updated: 2022/12/16 08:48:59 by ryebadok         ###   ########.fr        #
+#    Updated: 2022/12/16 09:17:20 by ryebadok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 NAME = megaphone
 ROOT = .
 INC = .
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -std=c++98
 CC = g++
 COPTIONS = 
 

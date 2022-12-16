@@ -6,7 +6,7 @@
 #    By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 18:40:45 by ryebadok          #+#    #+#              #
-#    Updated: 2022/12/16 09:02:27 by ryebadok         ###   ########.fr        #
+#    Updated: 2022/12/16 09:18:30 by ryebadok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 NAME = account
 ROOT = .
 INC = .
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -std=c++98
 CC = g++
 COPTIONS = 
 

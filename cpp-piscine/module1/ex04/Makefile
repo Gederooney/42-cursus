@@ -6,7 +6,7 @@
 #    By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 07:50:04 by ryebadok          #+#    #+#              #
-#    Updated: 2022/12/12 17:58:33 by ryebadok         ###   ########.fr        #
+#    Updated: 2022/12/16 16:26:25 by ryebadok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 NAME = sed
 ROOT = .
 INC = .
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -std=c++98
 CC = g++
 COPTIONS = 
 
@@ -28,10 +28,10 @@ RMD = rmdir
 OBJ = ofiles
 
 # -------------------------------- Header files ----------------------------- #
-HFILES = 
+HFILES = Reader.hpp
 
 # -------------------------------- CPP FILES ---------------------------------- #
-MAIN_CPP = main.cpp 
+MAIN_CPP = main.cpp Reader.cpp
 
 
 # -------------------------------- DIRECTORIES PATHS ------------------------ #
@@ -56,7 +56,7 @@ $(OBJ)/%.o: %.cpp
 $(NAME): $(OBJ) $(OBJS)
 	$(CC) $(COPTIONS) $(OBJS) -o $(NAME)
 	@clear
-	@echo "\033[0;33m $(NAME) is succesfuly built." "\033[0;32m Usage ==> ./$(NAME) arguments"
+	@echo "\033[0;33m $(NAME) is succesfuly built." "\033[0;32m Usage: ./$(NAME) [filnename] [string1] [string2]"
 
 $(OBJ):
 	@mkdir -p $(OBJ)
