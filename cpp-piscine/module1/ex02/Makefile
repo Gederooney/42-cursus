@@ -6,7 +6,7 @@
 #    By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 07:50:04 by ryebadok          #+#    #+#              #
-#    Updated: 2022/12/12 16:43:22 by ryebadok         ###   ########.fr        #
+#    Updated: 2022/12/16 09:50:42 by ryebadok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 NAME = brain
 ROOT = .
 INC = .
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -std=c++98
 CC = g++
 COPTIONS = 
 
