@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 17:36:01 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/12/12 17:49:35 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/12/16 10:57:03 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ Weapon::Weapon(string type) : _type(type)
 	_type = type;
 }
 
-Weapon::~Weapon()
-{
+Weapon::~Weapon(){
+	std::cout << "Weapon is destructed" << std::endl;
 }
 
 string const &Weapon::getType()

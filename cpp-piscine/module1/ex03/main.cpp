@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 17:43:07 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/12/12 17:48:08 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/12/16 11:17:05 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,5 @@ int main()
 		club.setType("some other type of club");
 		jim.attack();
 	}
+	return 0;
 }

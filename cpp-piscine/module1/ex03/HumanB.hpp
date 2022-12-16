@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 17:41:22 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/12/12 17:41:38 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/12/16 11:22:11 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,15 @@
 class HumanB
 {
 	private:
-		string _name;
-		Weapon *_weapon;
+		std::string	_name;
+		Weapon		*_weapon;
 	public:
-		HumanB(string name);
+		HumanB(std::string name);
+		HumanB(std::string name, Weapon &weapon);
 		~HumanB();
-		void attack();
-		void setWeapon(Weapon &weapon);
+		
+		void	attack();
+		void	setWeapon(Weapon &weapon);
 };
 
 #endif

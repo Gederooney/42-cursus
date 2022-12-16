@@ -6,18 +6,26 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 17:42:26 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/12/12 17:42:41 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/12/16 11:22:49 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanB.hpp"
 
-HumanB::HumanB(string name) : _name(name)
+HumanB::HumanB(std::string name)
 {
+	_name = name;
+	std::cout << "constructor called without a name" << std::endl;
+}
+
+HumanB::HumanB(std::string name, Weapon &weapon): _name(name), _weapon(&weapon)
+{
+	std::cout << "constructor called" << std::endl;
 }
 
 HumanB::~HumanB()
 {
+	std::cout << "destructor called for HumanB" << std::endl;
 }
 
 void HumanB::attack()
