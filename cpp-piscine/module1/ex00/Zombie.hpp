@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:00:43 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/12/12 16:18:04 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/12/16 09:21:42 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ class Zombie
 
 	public:
 		Zombie(std::string name);
-		// ~Zombie();
+		~Zombie();
+
 		void announce();
 };
 
