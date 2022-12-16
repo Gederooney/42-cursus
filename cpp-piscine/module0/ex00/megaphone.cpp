@@ -6,11 +6,12 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 08:45:43 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/12/15 11:04:18 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/12/15 19:53:16 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <string>
 
 int main (int c, char **v)
 {
@@ -20,7 +21,14 @@ int main (int c, char **v)
 	{
 		v++;
 		while (*v)
-			std::cout << *v++;
+		{
+			for (size_t i = 0; i < strlen(*v); i++)
+				(*v)[i] = std::toupper((*v)[i]);
+			std::cout << *v;
+			v++;
+			if (*v)
+				std::cout << " ";
+		}
 		std::cout << std::endl;
 	}
 	return (0);
