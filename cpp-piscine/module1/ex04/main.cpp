@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 17:56:25 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/12/16 17:32:43 by ryebadok         ###   ########.fr       */
+/*   Updated: 2022/12/17 08:55:37 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 int main(int c, char **v)
 {
-	int				fd;
-	std::string	s1, s2;
+	std::string	s1, s2, filename;
 
 	if(c != 4)
 	{
@@ -25,15 +24,12 @@ int main(int c, char **v)
 	}
 	else
 	{
-		std::ifstream stream(v[1]);
-		if (fd < 0 || fd > OPEN_MAX)
-			std::cout << "Cannot open " << v[1] << ". Please use a valid filename;" <<std::endl;
-		else {
-			s1 = v[2];
-			s2 = v[3];
-			Reader fs = Reader(fd, s1, s2);
-			fs.run();
-		}
+		filename = v[1];
+		s1 = v[2];
+		s2 = v[3];
+		Reader fs = Reader(filename, s1, s2);
+		if(fs.run())
+			fs.displayError();
 	}
 	return (0);
 }
