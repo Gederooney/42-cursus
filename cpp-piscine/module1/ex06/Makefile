@@ -6,12 +6,12 @@
 #    By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 07:50:04 by ryebadok          #+#    #+#              #
-#    Updated: 2022/12/17 14:24:16 by ryebadok         ###   ########.fr        #
+#    Updated: 2022/12/17 14:23:41 by ryebadok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # -------------------------------- Variables -------------------------------- #
-NAME = Harl
+NAME = HarlFilter
 ROOT = .
 INC = .
 CFLAGS = -Wall -Werror -Wextra -std=c++98
@@ -34,7 +34,7 @@ HFILES = Harl.hpp
 MAIN_CPP = main.cpp Harl.cpp
 
 # -------------------------------- CPP FILES ---------------------------------- #
-TEST_CPP = test.cpp
+TEST_CPP = 
 
 # -------------------------------- DIRECTORIES PATHS ------------------------ #
 MAIN_DIR = .
@@ -58,7 +58,7 @@ $(OBJ)/%.o: %.cpp
 $(NAME): $(OBJ) $(OBJS)
 	$(CC) $(COPTIONS) $(OBJS) -o $(NAME)
 	@clear
-	@echo "\033[0;33m $(NAME) is succesfuly built." "\033[0;32m Usage: ./$(NAME)"
+	@echo "\033[0;33m $(NAME) is succesfuly built." "\033[0;32m Usage: ./$(NAME) [level]"
 
 $(OBJ):
 	@mkdir -p $(OBJ)
