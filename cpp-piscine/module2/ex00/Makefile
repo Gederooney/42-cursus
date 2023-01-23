@@ -5,13 +5,13 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/12/02 07:50:04 by ryebadok          #+#    #+#              #
-#    Updated: 2023/01/20 20:29:05 by ryebadok         ###   ########.fr        #
+#    Created: 2023/01/20 21:29:46 by ryebadok          #+#    #+#              #
+#    Updated: 2023/01/20 21:30:12 by ryebadok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # -------------------------------- Variables -------------------------------- #
-NAME = Harl
+NAME = Fixed
 ROOT = .
 INC = .
 CFLAGS = -Wall -Werror -Wextra -std=c++98
@@ -28,13 +28,13 @@ RMD = rmdir
 OBJ = ofiles
 
 # -------------------------------- Header files ----------------------------- #
-HFILES = Harl.hpp
+HFILES = Fixed.hpp
 
 # -------------------------------- CPP FILES ---------------------------------- #
-MAIN_CPP = main.cpp Harl.cpp
+MAIN_CPP = main.cpp Fixed.cpp
 
 # -------------------------------- CPP FILES ---------------------------------- #
-TEST_CPP = test.cpp
+TEST_CPP = 
 
 # -------------------------------- DIRECTORIES PATHS ------------------------ #
 MAIN_DIR = .
@@ -43,8 +43,7 @@ MAIN_DIR = .
 MAIN_SRCS = $(addprefix $(MAIN_DIR)/, $(MAIN_CPP))
 
 # -------------------------------- OBJECTS FILES ---------------------------- #
-OFILES = $(MAIN_CPP:.cpp=.o) 
-# $(TEST_CPP:.cpp=.o)
+OFILES = $(MAIN_CPP:.cpp=.o) $(TEST_CPP:.cpp=.o)
 
 HEADERS = $(addprefix $(INC)/, $(HFILES))
 
@@ -59,7 +58,7 @@ $(OBJ)/%.o: %.cpp
 $(NAME): $(OBJ) $(OBJS)
 	$(CC) $(COPTIONS) $(OBJS) -o $(NAME)
 	@clear
-	@echo "\033[0;33m $(NAME) is succesfuly built." "\033[0;32m Usage: ./$(NAME)"
+	@echo "\033[0;33m $(NAME) is succesfuly built." "\033[0;32m Usage: ./$(NAME) [level]"
 
 $(OBJ):
 	@mkdir -p $(OBJ)

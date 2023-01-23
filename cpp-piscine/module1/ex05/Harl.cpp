@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 11:20:05 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/12/17 14:06:01 by ryebadok         ###   ########.fr       */
+/*   Updated: 2023/01/20 20:39:29 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 Harl::Harl()
 {
-	
+	std::cout << "Harl is constructed!" << std::endl;
 }
 
 Harl::~Harl()
-{}
+{
+	std::cout << "Harl is dead!" << std::endl;
+}
 
 void	Harl::complain(std::string level)
 {

@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/17 11:46:23 by ryebadok          #+#    #+#             */
-/*   Updated: 2023/01/20 20:55:42 by ryebadok         ###   ########.fr       */
+/*   Created: 2023/01/21 17:56:10 by ryebadok          #+#    #+#             */
+/*   Updated: 2023/01/21 18:05:14 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
+#ifndef CLAPTRAP_HPP
+# define CLAPTRAP_HPP
 
-int main (void)
+# include <iostream>
+
+class ClapTrap
 {
-	Harl instance;
-	void (Harl::*complain)(std::string level);
+	private:
+		std::string	_name;
+		int			_hitPoints;
+		int			_energyPoints;
+		int			_attackDamage;
 	
-	complain= &Harl::complain;
-	
-	(instance.*complain)("DEBUG");
-	return (0);
-}
+	public:
+		ClapTrap(std::string name);
+		~ClapTrap();
+
+		void	attack(std::string const& target);
+		void	takeDamage(unsigned int amount);
+		void	beRepaired(unsigned int amount);
+};
+
+#endif

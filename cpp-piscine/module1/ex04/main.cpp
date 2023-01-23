@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 17:56:25 by ryebadok          #+#    #+#             */
-/*   Updated: 2022/12/17 08:55:37 by ryebadok         ###   ########.fr       */
+/*   Updated: 2023/01/23 11:09:10 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ int main(int c, char **v)
 		filename = v[1];
 		s1 = v[2];
 		s2 = v[3];
+		if (s1.empty() || s2.empty())
+		{
+			std::cout << "Error [type:input] [Message: Strigns cannot not be empty] Usage: ./sed [filnename] [string1] [string2]" << std::endl;
+			return (-1);
+		}
 		Reader fs = Reader(filename, s1, s2);
 		if(fs.run())
 			fs.displayError();
