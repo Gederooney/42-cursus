@@ -6,7 +6,7 @@
 /*   By: jkasongo <jkasongo@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 12:01:26 by jkasongo          #+#    #+#             */
-/*   Updated: 2022/04/18 18:09:09 by jkasongo         ###   ########.fr       */
+/*   Updated: 2022/10/05 20:15:09 by jkasongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,4 +98,6 @@ void	free_array(void **array, size_t size);
 void	free_char_array(char **array, size_t size);
 void	ft_free_splitted(char **arr);
 int		ft_atoi_base(const char *str, int base);
+
+char	**ft_split_v(char *line, char *str);
 #endif

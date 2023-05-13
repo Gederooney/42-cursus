@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/dynamic_arrays.h"
+
 /*
  * Get the node on that index
  * Return (NULL) if no array or i bigger than length

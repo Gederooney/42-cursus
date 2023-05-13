@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 21:29:39 by ryebadok          #+#    #+#             */
-/*   Updated: 2023/01/20 23:02:00 by ryebadok         ###   ########.fr       */
+/*   Updated: 2023/01/23 18:01:52 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Fixed::Fixed()
 	this->_fixedPointValue = 0;
 }
 
-Fixed::Fixed( const Fixed & uneInstance )
+Fixed::Fixed( const Fixed &uneInstance )
 {
 	std::cout << "Copy constructor called" << std::endl;
 	*this = uneInstance;
@@ -29,7 +29,7 @@ Fixed::~Fixed()
 	std::cout << "Destructor called" << std::endl;
 }
 
-Fixed &		Fixed::operator=( Fixed const & aCopier )
+Fixed&	Fixed::operator=( Fixed const & aCopier )
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 	this->_fixedPointValue = aCopier.getRawBits();
@@ -44,5 +44,6 @@ int	Fixed::getRawBits( void ) const
 
 void	Fixed::setRawBits( int const raw )
 {
+	std::cout << "getRawBits member function called" << std::endl;
 	this->_fixedPointValue = raw;
 }

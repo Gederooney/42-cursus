@@ -6,7 +6,7 @@
 #    By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/20 21:29:46 by ryebadok          #+#    #+#              #
-#    Updated: 2023/01/20 21:30:12 by ryebadok         ###   ########.fr        #
+#    Updated: 2023/01/23 19:04:04 by ryebadok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ $(OBJ)/%.o: %.cpp
 $(NAME): $(OBJ) $(OBJS)
 	$(CC) $(COPTIONS) $(OBJS) -o $(NAME)
 	@clear
-	@echo "\033[0;33m $(NAME) is succesfuly built." "\033[0;32m Usage: ./$(NAME) [level]"
+	@echo "\033[0;33m $(NAME) is succesfuly built." "\033[0;32m Usage: ./$(NAME)"
 
 $(OBJ):
 	@mkdir -p $(OBJ)

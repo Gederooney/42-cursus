@@ -6,7 +6,7 @@
 #    By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/20 21:29:46 by ryebadok          #+#    #+#              #
-#    Updated: 2023/01/21 17:48:09 by ryebadok         ###   ########.fr        #
+#    Updated: 2023/01/24 10:32:27 by ryebadok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,10 +28,10 @@ RMD = rmdir
 OBJ = ofiles
 
 # -------------------------------- Header files ----------------------------- #
-HFILES = Fixed.hpp
+HFILES = Fixed.hpp Point.hpp
 
 # -------------------------------- CPP FILES ---------------------------------- #
-MAIN_CPP = main.cpp Fixed.cpp
+MAIN_CPP = main.cpp Fixed.cpp Point.cpp
 
 # -------------------------------- CPP FILES ---------------------------------- #
 TEST_CPP = 
@@ -58,7 +58,7 @@ $(OBJ)/%.o: %.cpp
 $(NAME): $(OBJ) $(OBJS)
 	$(CC) $(COPTIONS) $(OBJS) -o $(NAME)
 	@clear
-	@echo "\033[0;33m $(NAME) is succesfuly built." "\033[0;32m Usage: ./$(NAME) [level]"
+	@echo "\033[0;33m $(NAME) is succesfuly built." "\033[0;32m Usage: ./$(NAME)"
 
 $(OBJ):
 	@mkdir -p $(OBJ)
