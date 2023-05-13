@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 05:51:27 by ryebadok          #+#    #+#             */
-/*   Updated: 2023/05/12 06:32:18 by ryebadok         ###   ########.fr       */
+/*   Updated: 2023/05/13 15:01:51 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ class RPN
 		~RPN();
 		RPN &operator=(const RPN &r);
 
-		void addElement(int n);
+		void addElement(long n);
 		
 		void add();
 		void sub();
 		void mul();
 		void div();
 
-		int getResult();
+		long getResult();
 
 		void execute();
 
@@ -60,7 +60,7 @@ class RPN
 	private:
 		RPN();
 		std::string _s;
-		std::stack<int> _stack;
+		std::stack<long> _stack;
 };
 
 #endif

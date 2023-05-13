@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 18:33:39 by ryebadok          #+#    #+#             */
-/*   Updated: 2023/05/12 21:29:14 by ryebadok         ###   ########.fr       */
+/*   Updated: 2023/05/13 15:38:46 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,7 +191,7 @@ class PmergeMe
 			while (v && *v)
 			{
 				long val = atol(*v);
-				if (val > INT_MAX || val <= 0) throw std::invalid_argument("Error");
+				if (val > INT_MAX || val <= 0) throw std::invalid_argument("");
 					l.push_back(static_cast<int>(val));
 				v++;
 			}
@@ -202,7 +202,7 @@ class PmergeMe
 			{
 				long val = atol(*v);
 				if (val > INT_MAX || val <= 0)
-					throw std::invalid_argument("Error");
+					throw std::invalid_argument("");
 					d.push_back(static_cast<int>(val));
 				v++;
 			}

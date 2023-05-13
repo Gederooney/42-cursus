@@ -6,7 +6,7 @@
 #    By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/07 01:14:24 by mleblanc          #+#    #+#              #
-#    Updated: 2023/05/12 21:37:38 by ryebadok         ###   ########.fr        #
+#    Updated: 2023/05/13 15:11:20 by ryebadok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ COLOR := $$(printf "\033[1;32m")
 OBJ			=	obj
 
 NAME_LENGTH := $(shell echo '$(NAME)' | wc -c)
-JOT_OUPUT := $(shell jot -r 2000 100 1 | tr '\n' ' ')
+JOT_OUPUT := $(shell jot -r 10 100 1 | tr '\n' ' ')
 
 
 EQUALS_LINE := $$(printf "=%.0s" $$(seq 1 $$(($(MAX_WIDTH)))))

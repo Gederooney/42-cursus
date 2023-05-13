@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 08:43:33 by ryebadok          #+#    #+#             */
-/*   Updated: 2023/05/12 14:23:27 by ryebadok         ###   ########.fr       */
+/*   Updated: 2023/05/13 14:27:20 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ std::vector<std::string> split(std::string _str, char delim)
 
 	while (std::getline(tokenStream, token, delim))
 		tokens.push_back(token);
-		
+
 	return (tokens);
 }
 
@@ -57,9 +57,12 @@ bool isValidDate(std::string date)
 		return (false);
 	try
 	{
-		int year = std::stoi(tokens[0]);
-		int month = std::stoi(tokens[1]);
-		int day = std::stoi(tokens[2]);
+		std::stringstream ss(date);
+
+		int year, month, day;
+		char dash;
+
+		ss >> year >> dash >> month >> dash >> day;
 
 		if (year < 0 || month < 1 || month > 12 || day < 1 || day > 31) 
 			return false;

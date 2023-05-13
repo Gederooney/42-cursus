@@ -6,7 +6,7 @@
 #    By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/07 01:14:24 by mleblanc          #+#    #+#              #
-#    Updated: 2023/05/12 21:45:20 by ryebadok         ###   ########.fr        #
+#    Updated: 2023/05/13 15:21:07 by ryebadok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,11 +30,6 @@ INCS		=	RPN.hpp
 SRCS		=	main.cpp RPN.cpp
 OBJS		=	$(addprefix $(OBJ)/, $(SRCS:.cpp=.o))
 
-run: all
-	./${NAME} "8 9 *  9 - 9 - 9 - 4 - 1  +"
-	./${NAME} "3 -4 + "
-	./${NAME} "77 * 7 - "
-	./${NAME} "5 0 / "
 $(OBJ)/%.o:	%.cpp
 			@echo "Compiling $<..."
 			$(CC) $(CFLAGS) -I. -c $< -o $@
@@ -43,6 +38,13 @@ build: $(NAME)
 
 all:		CFLAGS += -O2
 all:		build
+
+
+run: 
+	./${NAME} "8 9 *  9 - 9 - 9 - 4 - 1  +"
+	./${NAME} "3 -4 + "
+	./${NAME} "77 * 7 - "
+	./${NAME} "5 0 / "
 
 
 debug:		CFLAGS += -g -fno-limit-debug-info

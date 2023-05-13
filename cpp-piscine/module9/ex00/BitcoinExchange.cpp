@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 10:45:13 by ryebadok          #+#    #+#             */
-/*   Updated: 2023/05/13 09:58:33 by ryebadok         ###   ########.fr       */
+/*   Updated: 2023/05/13 15:43:40 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ bool compareDates(Date &d1, Date &d2)
 	return (d1 < d2);
 }
 
-BitcoinExchange::BitcoinExchange(): _inputFilePath(""), _dataBase(), _error()
+BitcoinExchange::BitcoinExchange():  _error(), _inputFilePath(""), _dataBase(), _input()
 {
 }
 
-BitcoinExchange::BitcoinExchange(std::string file) : _inputFilePath(file), _dataBase(), _error()
+BitcoinExchange::BitcoinExchange(std::string file) : _error(), _inputFilePath(file), _dataBase(), _input()
 {
 	_error.file = DATA;
 	_error.path = "./data.csv";
@@ -35,7 +35,7 @@ BitcoinExchange::BitcoinExchange(std::string file) : _inputFilePath(file), _data
 	execute();
 }
 
-BitcoinExchange::BitcoinExchange(const BitcoinExchange &b): _inputFilePath(b._inputFilePath), _dataBase(b._dataBase), _error(b._error)
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &b): _error(b._error), _inputFilePath(b._inputFilePath), _dataBase(b._dataBase), _input(b._input)
 {
 	*this = b;
 }
@@ -61,8 +61,11 @@ void BitcoinExchange::checkTokens(std::vector<std::string> tokens, e_file_type t
 		throw ErrorException(_error);
 	}
 
-	std::string tmp1 = tream(tokens[0]);
-	std::string tmp2 = tream(tokens[1]);
+	std::string tmp1, tmp2;
+	tmp1 = tream(tokens[0]);
+
+	if (tokens.size() == 2)
+		tmp2 = tream(tokens[1]);
 
 	switch (type)
 	{
@@ -103,12 +106,12 @@ void BitcoinExchange::extractDataFromFile(char separator, std::string source_fil
 	std::string line;
 	std::vector<std::string> tokens;
 
-	// bool first = true;
-
 	if (_stream.is_open())
 	{
 		while (std::getline(_stream, line))
 		{
+			if (line.empty())
+				continue;
 			tokens = split(line, separator);
 			try
 			{
@@ -131,16 +134,11 @@ void BitcoinExchange::extractDataFromFile(char separator, std::string source_fil
 				{
 					tokens[0] = tream(tokens[0]);
 					this->_input.push_back(tokens);
+					break;
 				}
 			}
-			checkTokens(tokens, _error.file);
 		}
 		
-		// if ((this->_dataBase.dates.empty() && _error.file == DATA))
-		// {
-		// 	_error.type = EMPTY_FILE;
-		// 	throw ErrorException(_error);
-		// }
 	}
 	else
 	{
@@ -171,6 +169,17 @@ void BitcoinExchange::findMaxLessThanX(Date x, Date &min)
 	size_t left = 0;
 	size_t right = this->_dataBase.dates.size() - 1;
 
+	if (x < this->_dataBase.dates[left])
+	{
+		_error.type = NO_DATA;
+		throw ErrorException(_error);
+	}
+	else if (x > this->_dataBase.dates[right])
+	{
+		min = this->_dataBase.dates[right];
+		return ;
+	}
+
 	while (left <= right)
 	{
 		size_t mid =  left + (right - left) / 2;
@@ -182,6 +191,7 @@ void BitcoinExchange::findMaxLessThanX(Date x, Date &min)
 		else
 			right = mid - 1;
 	}
+
 }
 
 
@@ -222,7 +232,13 @@ void BitcoinExchange::execute()
 			
 			if (_error.type != NONE)
 				throw ErrorException(_error);
-			
+
+			if (this->_dataBase.values.empty())
+			{
+				_error.type = NO_DATA;
+				throw ErrorException(_error);
+			}
+
 			try
 			{
 				valueFromDb = _dataBase.values.at(dateStr);
@@ -261,7 +277,8 @@ void BitcoinExchange::execute()
 		}
 		catch(const std::exception& e)
 		{
-			std::cerr << "Error: bad input => " << (*it)[0] << std::endl;
+			if (it != this->_input.begin())
+				std::cerr << "Error: bad input => " << (*it)[0] << std::endl;
 		}
 		it++;
 	}
@@ -291,6 +308,9 @@ void BitcoinExchange::ErrorException::buildMessage()
 			break;
 		case EMPTY_LINE:
 			_msg = _msg + "Error: empty line in " + _error.path;
+			break;
+		case NO_DATA:
+			_msg = _msg + "Error: no data in database.";
 			break;
 		case NONE:
 			_msg = _msg + "Error: none";

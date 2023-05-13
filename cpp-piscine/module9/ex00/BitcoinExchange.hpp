@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 10:45:21 by ryebadok          #+#    #+#             */
-/*   Updated: 2023/05/12 17:32:01 by ryebadok         ###   ########.fr       */
+/*   Updated: 2023/05/13 11:09:51 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ enum e_error
 	NEGATIVE_NUMBER,
 	LARGE_NUMBER,
 	BAD_DATE,
-	EMPTY_LINE
+	EMPTY_LINE,
+	NO_DATA
 };
 
 struct s_error
@@ -67,10 +68,10 @@ class BitcoinExchange
 
 
 	private:
+		s_error _error;
 		std::string _inputFilePath;
 		Data _dataBase;
 		std::vector<std::vector<std::string> > _input;
-		s_error _error;
 
 		BitcoinExchange();
 		void checkTokens(std::vector<std::string> tokens, e_file_type type);

@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 05:59:30 by ryebadok          #+#    #+#             */
-/*   Updated: 2023/05/12 19:27:05 by ryebadok         ###   ########.fr       */
+/*   Updated: 2023/05/13 15:01:56 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ RPN &RPN::operator=(const RPN &r)
 	return (*this);
 }
 
-void RPN::addElement(int n)
+void RPN::addElement(long n)
 {
 	this->_stack.push(n);
 }
@@ -44,9 +44,9 @@ void RPN::add()
 {
 	if (this->_stack.size() < 2)
 		throw RPN::InvalidExpressionException();
-	int b = this->_stack.top();
+	long b = this->_stack.top();
 	this->_stack.pop();
-	int a = this->_stack.top();
+	long a = this->_stack.top();
 	this->_stack.pop();
 	this->_stack.push(a + b);
 }
@@ -55,9 +55,9 @@ void RPN::sub()
 {
 	if (this->_stack.size() < 2)
 		throw RPN::InvalidExpressionException();
-	int b = this->_stack.top();
+	long b = this->_stack.top();
 	this->_stack.pop();
-	int a = this->_stack.top();
+	long a = this->_stack.top();
 	this->_stack.pop();
 	this->_stack.push(a - b);
 }
@@ -66,9 +66,9 @@ void RPN::mul()
 {
 	if (this->_stack.size() < 2)
 		throw RPN::InvalidExpressionException();
-	int a = this->_stack.top();
+	long a = this->_stack.top();
 	this->_stack.pop();
-	int b = this->_stack.top();
+	long b = this->_stack.top();
 	this->_stack.pop();
 	this->_stack.push(a * b);
 }
@@ -78,16 +78,16 @@ void RPN::div()
 	if (this->_stack.size() < 2)
 		throw RPN::InvalidExpressionException();
 
-	int b = this->_stack.top();
+	long b = this->_stack.top();
 	if (b == 0)
 		throw RPN::InvalidExpressionException();
 	this->_stack.pop();
-	int a = this->_stack.top();
+	long a = this->_stack.top();
 	this->_stack.pop();
 	this->_stack.push(a / b);
 }
 
-int RPN::getResult()
+long RPN::getResult()
 {
 	if (this->_stack.size() != 1)
 		throw RPN::InvalidExpressionException();

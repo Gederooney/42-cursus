@@ -6,7 +6,7 @@
 /*   By: ryebadok <ryebadok@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 10:46:47 by ryebadok          #+#    #+#             */
-/*   Updated: 2023/05/10 11:39:56 by ryebadok         ###   ########.fr       */
+/*   Updated: 2023/05/13 14:19:42 by ryebadok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int main(int argc, char **argv)
 	try
 	{
 		BitcoinExchange b(argv[1]);
+		(void)b;
 	}
 	catch(const std::exception& e)
 	{
