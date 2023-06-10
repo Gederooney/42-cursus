@@ -4,6 +4,9 @@
 
 [![ryebadok's 42 stats](https://badge42.vercel.app/api/v2/clip8z2k2001108mhtf68qdxv/stats?cursusId=9&coalitionId=undefined)](https://github.com/JaeSeoKim/badge42)
 
-#
-Inception [![ryebadok's 42 ft_transcendence Score](https://badge42.vercel.app/api/v2/clip8z2k2001108mhtf68qdxv/project/3107415)](https://github.com/JaeSeoKim/badge42)
-#
+| Header 1 | Header 2 | Header 3 |
+| -------- | -------- | -------- |
+| Cell 1A  | Cell 1B  | Cell 1C  |
+| Cell 2A  | Cell 2B  | Cell 2C  |
+| Cell 3A  | Cell 3B  | Cell 3C  |
+
