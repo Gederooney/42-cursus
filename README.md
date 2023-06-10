@@ -4,9 +4,9 @@
 
 [![ryebadok's 42 stats](https://badge42.vercel.app/api/v2/clip8z2k2001108mhtf68qdxv/stats?cursusId=9&coalitionId=undefined)](https://github.com/JaeSeoKim/badge42)
 
-| Circle              | Project Names       | Final Grade          |
+| Circle              | Project Names       | Final Mark          |
 | ------------------- | -------- | -------- |
 | 00                  | LIBFT               |[![ryebadok's 42 Libft Score](https://badge42.vercel.app/api/v2/clip8z2k2001108mhtf68qdxv/project/2167563)](https://github.com/JaeSeoKim/badge42)
-| Cell 2A  | Cell 2B  | Cell 2C  |
-| Cell 3A  | Cell 3B  | Cell 3C  |
+| 01                  | FT_PRINTF           | [![ryebadok's 42 ft_printf Score](https://badge42.vercel.app/api/v2/clip8z2k2001108mhtf68qdxv/project/2176872)](https://github.com/JaeSeoKim/badge42)|
+| 01                  | GET_NEXT_LINE       | [![ryebadok's 42 get_next_line Score](https://badge42.vercel.app/api/v2/clip8z2k2001108mhtf68qdxv/project/2178426)](https://github.com/JaeSeoKim/badge42)|
 
