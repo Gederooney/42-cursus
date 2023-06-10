@@ -13,3 +13,7 @@
 | 02     | MINITALK        | ![ryebadok's 42 minitalk Score](https://badge42.vercel.app/api/v2/clip8z2k2001108mhtf68qdxv/project/2283995) |
 | 02     | PUSH_SWAP       | ![ryebadok's 42 push_swap Score](https://badge42.vercel.app/api/v2/clip8z2k2001108mhtf68qdxv/project/2283999) |
 | 02     | SO_LONG         | ![ryebadok's 42 so_long Score](https://badge42.vercel.app/api/v2/clip8z2k2001108mhtf68qdxv/project/2284001) |
+| 03     | PHILOSOPHERS    | ![ryebadok's 42 Philosophers Score](https://badge42.vercel.app/api/v2/clip8z2k2001108mhtf68qdxv/project/2383889)] |
+| 03     | MINISHELL       | ![ryebadok's 42 minishell Score](https://badge42.vercel.app/api/v2/clip8z2k2001108mhtf68qdxv/project/2402250) |
+| 04     | MINIRT          | ![ryebadok's 42 miniRT Score](https://badge42.vercel.app/api/v2/clip8z2k2001108mhtf68qdxv/project/2712059) |
+| 04     | NET PRATICE     | ![ryebadok's 42 NetPractice Score](https://badge42.vercel.app/api/v2/clip8z2k2001108mhtf68qdxv/project/2669770) |
