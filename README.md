@@ -14,7 +14,7 @@
 | 02     | MINITALK        | ![ryebadok's 42 minitalk Score](https://badge42.vercel.app/api/v2/clip8z2k2001108mhtf68qdxv/project/2283995) | SENDING MESSAGES TROUGH SIGNALS |
 | 02     | PUSH_SWAP       | ![ryebadok's 42 push_swap Score](https://badge42.vercel.app/api/v2/clip8z2k2001108mhtf68qdxv/project/2283999) | SORTING ALGORITHMS
 | 02     | SO_LONG         | ![ryebadok's 42 so_long Score](https://badge42.vercel.app/api/v2/clip8z2k2001108mhtf68qdxv/project/2284001) | 2D GAME IN C |
-| 03     | PHILOSOPHERS    | ![ryebadok's 42 Philosophers Score](https://badge42.vercel.app/api/v2/clip8z2k2001108mhtf68qdxv/project/2383889)] | MULTI THREADING |
+| 03     | PHILOSOPHERS    | ![ryebadok's 42 Philosophers Score](https://badge42.vercel.app/api/v2/clip8z2k2001108mhtf68qdxv/project/2383889) | MULTI THREADING |
 | 03     | MINISHELL       | ![ryebadok's 42 minishell Score](https://badge42.vercel.app/api/v2/clip8z2k2001108mhtf68qdxv/project/2402250) | SMALL VERSION OF SHELL |
 | 04     | MINIRT          | ![ryebadok's 42 miniRT Score](https://badge42.vercel.app/api/v2/clip8z2k2001108mhtf68qdxv/project/2712059) | RAY CASTING |
 | 04     | NET PRATICE     | ![ryebadok's 42 NetPractice Score](https://badge42.vercel.app/api/v2/clip8z2k2001108mhtf68qdxv/project/2669770) | UNDERSTANDING NETWORK PROTOCOLS TCP/IP |
