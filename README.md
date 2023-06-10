@@ -18,3 +18,9 @@
 | 03     | MINISHELL       | ![ryebadok's 42 minishell Score](https://badge42.vercel.app/api/v2/clip8z2k2001108mhtf68qdxv/project/2402250) | SMALL VERSION OF SHELL |
 | 04     | MINIRT          | ![ryebadok's 42 miniRT Score](https://badge42.vercel.app/api/v2/clip8z2k2001108mhtf68qdxv/project/2712059) | RAY CASTING |
 | 04     | NET PRATICE     | ![ryebadok's 42 NetPractice Score](https://badge42.vercel.app/api/v2/clip8z2k2001108mhtf68qdxv/project/2669770) | UNDERSTANDING NETWORK PROTOCOLS TCP/IP |
+| 04 | CPP00 | ![ryebadok's 42 CPP Module 00 Score](https://badge42.vercel.app/api/v2/clip8z2k2001108mhtf68qdxv/project/2692422) | INTRODUCTION TO POO IN CPP |
+| 04 | CPP01 | ![ryebadok's 42 CPP Module 01 Score](https://badge42.vercel.app/api/v2/clip8z2k2001108mhtf68qdxv/project/2916519) | INTRODUCTION TO POO IN CPP |
+| 04 | CPP02 | ![ryebadok's 42 CPP Module 02 Score](https://badge42.vercel.app/api/v2/clip8z2k2001108mhtf68qdxv/project/2944642) | INTRODUCTION TO POO IN CPP |
+| 04 | CPP03 | ![ryebadok's 42 CPP Module 03 Score](https://badge42.vercel.app/api/v2/clip8z2k2001108mhtf68qdxv/project/2948883) | INTRODUCTION TO POO IN CPP |
+| 04 | CPP04 | ![ryebadok's 42 CPP Module 04 Score](https://badge42.vercel.app/api/v2/clip8z2k2001108mhtf68qdxv/project/3025752) | INTRODUCTION TO POO IN CPP |
+| 04 | CPP05 | ![ryebadok's 42 CPP Module 05 Score](https://badge42.vercel.app/api/v2/clip8z2k2001108mhtf68qdxv/project/3026248) | INTRODUCTION TO POO IN CPP |
