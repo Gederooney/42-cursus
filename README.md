@@ -1,7 +1,7 @@
 # The C piscine == the selections
 [![ryebadok's 42 stats](https://badge42.vercel.app/api/v2/clip8z2k2001108mhtf68qdxv/stats?cursusId=9&coalitionId=undefined)](https://github.com/JaeSeoKim/badge42)
 
-# THE 42 Cursus
+# The 42 Cursus
 
 [![ryebadok's 42 stats](https://badge42.vercel.app/api/v2/clip8z2k2001108mhtf68qdxv/stats?cursusId=21&coalitionId=undefined)](https://github.com/JaeSeoKim/badge42)
 
