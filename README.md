@@ -28,5 +28,7 @@
 | 05 | CPP07 | ![ryebadok's 42 CPP Module 07 Score](https://badge42.vercel.app/api/v2/clip8z2k2001108mhtf68qdxv/project/3089748) | |
 | 05 | CPP08 | ![ryebadok's 42 CPP Module 08 Score](https://badge42.vercel.app/api/v2/clip8z2k2001108mhtf68qdxv/project/3090512) | |
 | 05 | CPP09 | ![ryebadok's 42 CPP Module 09 Score](https://badge42.vercel.app/api/v2/clip8z2k2001108mhtf68qdxv/project/3090818) | |
+| 05 | INCEPTION | ![ryebadok's 42 Inception Score](https://badge42.vercel.app/api/v2/clip8z2k2001108mhtf68qdxv/project/3091837) | DOCKER DOCKER-COMPOSE|
+| 06 | TRANSCENDANCE | ![ryebadok's 42 ft_transcendence Score](https://badge42.vercel.app/api/v2/clip8z2k2001108mhtf68qdxv/project/3107415) | |
 
 
