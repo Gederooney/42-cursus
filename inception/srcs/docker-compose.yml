@@ -13,31 +13,31 @@ services:
     networks:
       - backend
 
-  wordpress:
-    depends_on:
-      - mariadb
-    build: ./requirements/wordpress/Dockerfile
-    volumes:
-      - wordpress_data:/var/www/html
-    ports:
-      - "9000:80"
-    environment:
-      WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
-      WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
-      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
-      WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
-    networks:
-      - backend
-      - frontend
+  # wordpress:
+  #   depends_on:
+  #     - mariadb
+  #   build: ./requirements/wordpress/Dockerfile
+  #   volumes:
+  #     - wordpress_data:/var/www/html
+  #   ports:
+  #     - "9000:80"
+  #   environment:
+  #     WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
+  #     WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
+  #     WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+  #     WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
+  #   networks:
+  #     - backend
+  #     - frontend
 
-  nginx:
-    depends_on:
-      - wordpress
-    build: ./requirements/nginx/Dockerfile
-    ports: 
-      - "80:80"
-    networks:
-      - frontend
+  # nginx:
+  #   depends_on:
+  #     - wordpress
+  #   build: ./requirements/nginx/Dockerfile
+  #   ports: 
+  #     - "80:80"
+  #   networks:
+  #     - frontend
 
 volumes:
   mariadb_data:
